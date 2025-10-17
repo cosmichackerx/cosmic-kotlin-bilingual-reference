@@ -394,3 +394,81 @@ fun main() {
     println("\nAll loops completed.")
 }
 ```
+---
+
+## 🔤 Definitions (Function)
+
+- **Function**: A reusable block of code that performs a specific task.
+- **Parameters**: Inputs passed to a function to customize its behavior.
+- **String Interpolation (`$var`, `${expression}`)**: Embeds variables or expressions directly inside strings.
+- **`Unit`**: Kotlin’s equivalent of `void` in Java — indicates no meaningful return value.
+- **Default Parameter**: A parameter with a pre-defined value used when no argument is passed.
+- **Expression Body**: A concise way to define functions using `=` instead of `return`.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Function = "reusable machine"**  
+  > _"Jaise aik chhoti factory jo har baar wahi kaam karti hai."_  
+  Like a mini factory that performs the same task every time.
+
+- **Parameters = "custom ingredients"**  
+  > _"Jaise biryani mein mirch aur namak — har baar alag ho sakta hai."_  
+  Like spices in biryani — you can adjust them each time.
+
+- **String Interpolation = "inline printing"**  
+  > _"Jaise sentence ke andar naam ghusa dena."_  
+  Like inserting a name directly into a sentence.
+
+- **`Unit` = "no return gift"**  
+  > _"Kaam ho gaya, lekin kuch wapas nahi mila."_  
+  Task completed, but nothing is returned.
+
+- **Default Parameter = "backup value"**  
+  > _"Agar user kuch na de to system apna value use karega."_  
+  If no input is given, the system uses its own value.
+
+- **Expression Body = "shortcut function"**  
+  > _"Jaise ek line mein kaam nipta dena."_  
+  Like finishing a task in one line.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example 1 — Function with parameters and string interpolation
+    fun printSum(a: Int, b: Int) {
+        println("Sum of $a and $b is ${a + b}")
+    }
+
+    // Example 2 — Function returning Unit (like void in Java)
+    fun printMessage(message: String): Unit {
+        println(message)
+    }
+
+    // Example 3 — Function with a default parameter value
+    fun printMessageWithPrefix(message: String, prefix: String = "Info") {
+        println("[$prefix] $message")
+    }
+
+    // Example 4 — Function returning an Int explicitly
+    fun sum(x: Int, y: Int): Int {
+        return x + y
+    }
+
+    // Example 5 — Function with expression body (no need for 'return')
+    fun multiply(x: Int, y: Int) = x * y
+
+    // Example calls
+    printSum(3, 7)
+    printMessage("Hello, Kotlin!")
+    printMessageWithPrefix("System starting...")
+    printMessageWithPrefix("Low battery", "Warning")
+    println("Sum result: ${sum(5, 8)}")
+    println("Multiply result: ${multiply(4, 6)}")
+}
+```
