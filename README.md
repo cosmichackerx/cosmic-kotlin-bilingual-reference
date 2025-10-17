@@ -44,7 +44,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Safe vs Unsafe cast)
 
 - **`as` (Unsafe Cast)**: Forcefully converts a value to a specific type. If the actual type doesn't match, it throws a `ClassCastException`.
 - **`as?` (Safe Cast)**: Attempts to convert a value to a specific type. If the cast fails, it returns `null` instead of crashing.
@@ -88,7 +88,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (If Expression)
 
 - **`if` statement**: A conditional block that executes code based on whether a condition is true or false.
 - **`if-else` block**: Provides two paths — one for `true`, one for `false`.
@@ -154,7 +154,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (When Expression)
 
 - **`when`**: Kotlin’s flexible alternative to `switch`. It matches a value or condition against multiple branches.
 - **`enum class`**: A special class used to define a fixed set of constants.
