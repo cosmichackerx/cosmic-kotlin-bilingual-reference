@@ -564,3 +564,67 @@ fun main() {
     println("Rectangle vertex count: ${rectangle.vertexCount}")
 }
 ```
+---
+
+## 🔤 Definitions
+
+- **Extension Function**: A way to add new functionality to existing classes without modifying their source code.
+- **`this` keyword**: Refers to the current object — in extension functions, it refers to the receiver (e.g., the list).
+- **Generic Function (`<T>`)**: A function that works with any type, making it reusable and type-safe.
+- **MutableList**: A list that allows modification — adding, removing, or updating elements.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Extension Function = "add-on skill"**  
+  > _"Jaise aik aadmi ko nayi skill sikhana bina uski asal shakl badle."_  
+  Like teaching someone a new skill without changing who they are.
+
+- **`this` = "current object pointer"**  
+  > _"Jaise 'main khud' — jab koi banda apne baare mein baat karta hai."_  
+  Like saying “I myself” — refers to the current object.
+
+- **Generic Function = "universal tool"**  
+  > _"Jaise aik screwdriver jo har size ke bolt ko khol sakta hai."_  
+  Like a screwdriver that fits any bolt size.
+
+- **MutableList = "editable notebook"**  
+  > _"Jaise aik diary jisme aap kuch bhi likh sakte hain, mita sakte hain."_  
+  Like a diary where you can write, erase, and update freely.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example 1 — Extension function for MutableList<Int>
+    fun MutableList<Int>.swap(index1: Int, index2: Int) {
+        val tmp = this[index1]       // 'this' refers to the list itself
+        this[index1] = this[index2]  // swap values
+        this[index2] = tmp
+    }
+
+    // Using the Int-specific version
+    val intList = mutableListOf(1, 2, 3)
+    println("Before swap (Int list): $intList")
+    intList.swap(0, 2)               // swaps first and last
+    println("After swap (Int list):  $intList\n")
+
+
+    // Example 2 — Generic version (works for any type)
+    fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
+        val tmp = this[index1]       // 'this' refers to the current list
+        this[index1] = this[index2]
+        this[index2] = tmp
+    }
+
+    // Using the generic version with Strings
+    val stringList = mutableListOf("A", "B", "C")
+    println("Before swap (String list): $stringList")
+    stringList.swap(0, 2)            // swaps "A" and "C"
+    println("After swap (String list):  $stringList")
+}
+```
