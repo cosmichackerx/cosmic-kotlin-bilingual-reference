@@ -42,7 +42,7 @@ fun main() {
     }
 }
 ```
-![1](resources/1.png)
+![1](resources/0.png)
 ---
 
 ## 🔤 Definitions (Safe vs Unsafe cast)
@@ -87,7 +87,7 @@ fun main() {
     println("-= $str $std $num")
 }
 ```
-![1](resources/2.png)
+![1](resources/1.png)
 ---
 
 ## 🔤 Definitions (If Expression)
