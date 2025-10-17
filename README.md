@@ -87,6 +87,7 @@ fun main() {
     println("-= $str $std $num")
 }
 ```
+![1](resources/2.png)
 ---
 
 ## 🔤 Definitions (If Expression)
