@@ -151,3 +151,137 @@ fun main() {
     println("max3 = $max3")
     println("max4 = $max4")
 }
+```
+---
+
+## 🔤 Definitions
+
+- **`when`**: Kotlin’s flexible alternative to `switch`. It matches a value or condition against multiple branches.
+- **`enum class`**: A special class used to define a fixed set of constants.
+- **`in` / `!in`**: Used to check if a value exists inside a range or collection.
+- **`is`**: Used for type checking — smart casts allow safe access to properties.
+- **`sealed class`**: Restricts class hierarchy to known subclasses — useful for exhaustive `when` expressions.
+- **`when as expression`**: Returns a value directly from the matched branch.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`when` = "multi-path decision gate"**  
+  > _"Jaise aik chowk jahan har raasta alag condition ka hai."_  
+  Like a junction where each path depends on a condition.
+
+- **`enum` = "fixed menu"**  
+  > _"Jaise restaurant ka menu — sirf kuch hi options."_  
+  Like a restaurant menu — only specific choices allowed.
+
+- **`in` / `!in` = "membership check"**  
+  > _"Jaise dekhna ke banda group mein hai ya nahi."_  
+  Like checking if someone belongs to a group.
+
+- **`is` = "type passport"**  
+  > _"Jaise passport check karta hai ke banda Pakistani hai ya nahi."_  
+  Like verifying someone's identity by their type.
+
+- **`sealed class` = "controlled family tree"**  
+  > _"Jaise ek khandan jisme sirf kuch hi members allowed hain."_  
+  Like a family with limited, known members.
+
+---
+
+## 💻 Code Examples
+
+```kotlin
+fun main() {
+    val x = 2
+    val y = 5
+    val s = "5"
+    val validNumbers = listOf(2, 4, 6, 8, 10)
+
+    // Example 1 — Simple when statement
+    when (x) {
+        1 -> println("x == 1")
+        2 -> println("x == 2")
+        else -> {
+            println("x is neither 1 nor 2")
+        }
+    }
+
+    // Example 2 — when as an expression (else required if not all cases covered)
+    enum class Bit { ZERO, ONE }
+
+    fun getRandomBit(): Bit = if (Math.random() > 0.5) Bit.ONE else Bit.ZERO
+
+    val numericValue = when (getRandomBit()) {
+        Bit.ZERO -> 0
+        Bit.ONE -> 1
+    }
+    println("Numeric value: $numericValue")
+
+    // Example 3 — when with enums (with and without else)
+    enum class Color { RED, GREEN, BLUE }
+
+    fun getColor(): Color = Color.GREEN
+
+    when (getColor()) {
+        Color.RED -> println("red")
+        Color.GREEN -> println("green")
+        Color.BLUE -> println("blue")
+    }
+
+    when (getColor()) {
+        Color.RED -> println("red")
+        else -> println("not red")
+    }
+
+    // Example 4 — multiple conditions in one branch
+    when (x) {
+        0, 1 -> println("x == 0 or x == 1")
+        else -> println("otherwise")
+    }
+
+    // Example 5 — arbitrary expressions in conditions
+    when (x) {
+        s.toInt() -> println("s encodes x")
+        else -> println("s doesn't encode x")
+    }
+
+    // Example 6 — checking ranges and collections
+    when (x) {
+        in 1..10 -> println("x is in the range 1..10")
+        in validNumbers -> println("x is a valid number")
+        !in 10..20 -> println("x is outside 10..20")
+        else -> println("none of the above")
+    }
+
+    // Example 7 — type checking (smart casts)
+    fun hasPrefix(x: Any) = when (x) {
+        is String -> x.startsWith("prefix")
+        else -> false
+    }
+    println("Has prefix: ${hasPrefix("prefixTest")}")
+
+    // Example 8 — when without argument (condition-based)
+    fun Int.isOdd() = this % 2 != 0
+    fun Int.isEven() = this % 2 == 0
+
+    when {
+        x.isOdd() -> println("x is odd")
+        y.isEven() -> println("y is even")
+        else -> println("x + y is odd")
+    }
+}
+
+// Example 9 — when as expression with result handling
+sealed class Response
+class Success(val body: String) : Response()
+class HttpError(val status: Int) : Response()
+
+fun executeRequest(): Response =
+    if (Math.random() > 0.5) Success("OK") else HttpError(404)
+
+fun getBody(): String = when (val response = executeRequest()) {
+    is Success -> response.body
+    is HttpError -> throw Exception("HTTP Error: ${response.status}")
+}
+```
