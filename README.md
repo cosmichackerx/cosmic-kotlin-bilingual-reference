@@ -42,7 +42,7 @@ fun main() {
     }
 }
 ```
-![1] (resources/1.png)
+![1](resources/1.png)
 ---
 
 ## 🔤 Definitions (Safe vs Unsafe cast)
