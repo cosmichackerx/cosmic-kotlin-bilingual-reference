@@ -1,6 +1,6 @@
 # cosmic-kotlin-bilingual-reference
-A beginner-friendly Kotlin reference with bilingual (Urdu-English) explanations, mnemonics, and practical code examples. Covers key topics like constructors, null safety, companion objects, and collections — designed for learners who love clarity, analogies, and hands-on coding
-
+A beginner-friendly Kotlin reference with bilingual (Urdu–English) explanations, mnemonics, and practical code examples. 🌱
+Covers core topics like constructors, null safety, companion objects, and collections — and keeps growing daily as I add new concepts, definitions, and hands-on examples for clearer learning.
 ## 🔤 Definitions
 
 - **`when` expression**: Kotlin’s powerful replacement for `switch`. It checks a value against multiple conditions.
