@@ -566,7 +566,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Extension Function)
 
 - **Extension Function**: A way to add new functionality to existing classes without modifying their source code.
 - **`this` keyword**: Refers to the current object — in extension functions, it refers to the receiver (e.g., the list).
