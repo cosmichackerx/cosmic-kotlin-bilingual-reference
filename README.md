@@ -288,7 +288,7 @@ fun getBody(): String = when (val response = executeRequest()) {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Break and Continue)
 
 - **Labeled loop (`loop@`)**: A named loop that allows you to break or continue from outer loops.
 - **`break@label`**: Exits the loop with the specified label.
