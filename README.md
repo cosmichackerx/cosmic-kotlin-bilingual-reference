@@ -154,7 +154,7 @@ fun main() {
     println("max4 = $max4")
 }
 ```
-![2](2.png)
+![2](resources/2.png)
 ---
 
 ## 🔤 Definitions (When Expression)
@@ -289,7 +289,7 @@ fun getBody(): String = when (val response = executeRequest()) {
     is HttpError -> throw Exception("HTTP Error: ${response.status}")
 }
 ```
-![3](3.png)
+![3](resources/3.png)
 ---
 
 ## 🔤 Definitions (Break and Continue)
@@ -398,7 +398,7 @@ fun main() {
     println("\nAll loops completed.")
 }
 ```
-![4](4.png)
+![4](resources/4.png)
 ---
 
 ## 🔤 Definitions (Function)
@@ -477,7 +477,7 @@ fun main() {
     println("Multiply result: ${multiply(4, 6)}")
 }
 ```
-![5](5.png)
+![5](resources/5.png)
 ---
 
 ## 🔤 Definitions (Overriding Methods)
@@ -570,7 +570,7 @@ fun main() {
     println("Rectangle vertex count: ${rectangle.vertexCount}")
 }
 ```
-![6](6.png)
+![6](resources/6.png)
 ---
 
 ## 🔤 Definitions (Extension Function)
@@ -635,4 +635,4 @@ fun main() {
     println("After swap (String list):  $stringList")
 }
 ```
-![7](7)
+![7](resources/7.png)
