@@ -41,3 +41,46 @@ fun main() {
         is IntArray -> println(x.sum())
     }
 }
+---
+
+## 🔤 Definitions
+
+- **`as` (Unsafe Cast)**: Forcefully converts a value to a specific type. If the actual type doesn't match, it throws a `ClassCastException`.
+- **`as?` (Safe Cast)**: Attempts to convert a value to a specific type. If the cast fails, it returns `null` instead of crashing.
+- **`Any`**: The universal supertype in Kotlin. Every non-nullable type inherits from `Any`.
+- **`String?`**: A nullable string — can hold either a string or `null`.
+- **`Long?`**: A nullable long integer — can hold a long value or `null`.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`as` = "forceful cast"**  
+  > _"Jaise zabardasti kehna 'ye kitab Urdu ki hai' bina dekhe."_  
+  Like insisting a book is Urdu without checking — risky and crash-prone.
+
+- **`as?` = "polite cast"**  
+  > _"Jaise tameez se pehle dekh lena, agar Urdu hai to padho, warna chhor do."_  
+  Like checking politely — if it fits, use it; if not, return `null`.
+
+- **`Any` = "universal container"**  
+  > _"Jaise aik box jisme kuch bhi ho sakta hai."_  
+  Like a box that can hold anything — string, number, or even an array.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {  
+    val obj: Any = "Hello"
+
+    // Unsafe Cast
+    val str: String = obj as String // ✅ Returns "Hello"
+    val std: String? = obj as String // ✅ Returns "Hello"
+
+    // Safe Cast
+    val num: Long? = obj as? Long // ✅ Returns null, no crash
+
+    println("-= $str $std $num")
+}
