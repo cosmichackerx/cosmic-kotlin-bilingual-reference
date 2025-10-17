@@ -41,6 +41,7 @@ fun main() {
         is IntArray -> println(x.sum())
     }
 }
+```
 ---
 
 ## 🔤 Definitions
