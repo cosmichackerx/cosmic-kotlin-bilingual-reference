@@ -474,7 +474,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Overriding Methods)
 
 - **`open`**: Marks a class or member as extendable or overridable.
 - **`override`**: Replaces a superclass method or property with a new implementation in the subclass.
