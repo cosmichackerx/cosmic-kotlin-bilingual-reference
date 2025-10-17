@@ -273,6 +273,7 @@ fun main() {
 }
 
 // Example 9 — when as expression with result handling
+// We can capture when subject in a variable using following syntax
 sealed class Response
 class Success(val body: String) : Response()
 class HttpError(val status: Int) : Response()
