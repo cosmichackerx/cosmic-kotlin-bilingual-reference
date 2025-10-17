@@ -286,3 +286,111 @@ fun getBody(): String = when (val response = executeRequest()) {
     is HttpError -> throw Exception("HTTP Error: ${response.status}")
 }
 ```
+---
+
+## 🔤 Definitions
+
+- **Labeled loop (`loop@`)**: A named loop that allows you to break or continue from outer loops.
+- **`break@label`**: Exits the loop with the specified label.
+- **`return`**: Exits from a function or lambda.
+- **`return@label`**: Performs a local return from a lambda or block with a label.
+- **Anonymous function**: A function without a name, often used inside higher-order functions like `forEach`.
+- **`run` block**: Executes a block of code and returns its result — can be labeled for controlled exits.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Labeled loop = "named gate"**  
+  > _"Jaise har darwaza ka naam ho — taake pata chale kis darwazay se nikalna hai."_  
+  Like naming each door so you know exactly which one to exit.
+
+- **`break@label` = "emergency exit from specific gate"**  
+  > _"Jaise aik building mein se seedha bahar nikalna — bina andar ke raste follow kiye."_  
+  Like exiting a building directly from a specific door.
+
+- **`return` in lambda = "exit from function"**  
+  > _"Jaise kisi kaam ko chhor kar seedha ghar chale jaana."_  
+  Like abandoning a task and going home immediately.
+
+- **`return@label` = "skip this step only"**  
+  > _"Jaise aik sawal chhor kar agla sawal karna — poora paper nahi chhorna."_  
+  Like skipping one question without leaving the whole exam.
+
+- **Anonymous function = "nameless helper"**  
+  > _"Jaise aik mazdoor jo kaam karta hai bina naam bataye."_  
+  Like a worker who does the job without introducing himself.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example 1 — Simple labeled loop (label name = loop)
+    loop@ for (i in 1..100) {
+        // Do something
+        // break@loop or continue@loop can be used here if needed
+    }
+
+    // Example 2 — Using break with a label (breaks outer loop)
+    loop@ for (i in 1..100) {
+        for (j in 1..100) {
+            if (i * j > 500) break@loop // exits both loops when condition met
+        }
+    }
+
+    // Example 3 — Non-local return from lambda (stops whole function)
+    fun foo1() {
+        listOf(1, 2, 3, 6, 5).forEach {
+            if (it == 3) return // exits foo1() completely
+            println(it)
+        }
+        println("this point is unreachable") // never runs
+    }
+
+    // Example 4 — Local return using explicit label
+    fun foo2() {
+        listOf(1, 2, 3, 4, 5).forEach Muhammad@{
+            if (it == 3) return@Muhammad // skips only this iteration
+            println(it)
+        }
+        println("done with explicit label")
+    }
+
+    // Example 5 — Local return using implicit label (forEach)
+    fun foo3() {
+        listOf(1, 2, 3, 4, 5).forEach {
+            if (it == 3) return@forEach // continues loop, doesn’t exit function
+            println(it)
+        }
+        println("done with implicit label")
+    }
+
+    // Example 6 — Local return with anonymous function
+    fun foo4() {
+        listOf(1, 2, 3, 4, 5).forEach(fun(value: Int) {
+            if (value == 3) return // returns only from anonymous function
+            println(value)
+        })
+        println("done with anonymous function")
+    }
+
+    // Example 7 — Using run block with label
+    fun foo5() = run loop@{
+        listOf(1, 2, 3, 4, 5).forEach {
+            if (it == 3) return@loop // exits run block, not main
+            print(it)
+        }
+    }
+
+    // Call all examples
+    foo1()
+    foo2()
+    foo3()
+    foo4()
+    foo5()
+    println("\nAll loops completed.")
+}
+```
