@@ -472,3 +472,95 @@ fun main() {
     println("Multiply result: ${multiply(4, 6)}")
 }
 ```
+---
+
+## 🔤 Definitions
+
+- **`open`**: Marks a class or member as extendable or overridable.
+- **`override`**: Replaces a superclass method or property with a new implementation in the subclass.
+- **Base class**: A parent class that defines common behavior or structure.
+- **Subclass**: A child class that inherits from a base class and can customize or extend its behavior.
+- **Property overriding**: Changing the value or behavior of a property defined in a superclass.
+- **Function overriding**: Replacing a method from the superclass with a new version in the subclass.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`open` = "permission to customize"**  
+  > _"Jaise aik recipe jisme likha ho 'aap masalay badal sakte hain'."_  
+  Like a recipe that allows you to change the spices.
+
+- **`override` = "custom version"**  
+  > _"Jaise aik student ne apna tareeqa apna liya — asal tareeqa chhor kar."_  
+  Like a student using their own method instead of the original one.
+
+- **Base class = "parent blueprint"**  
+  > _"Jaise aik ghar ka naqsha jo sab ko diya gaya."_  
+  Like a blueprint shared with all builders.
+
+- **Subclass = "customized child"**  
+  > _"Jaise har bacha apne tareeqay se kaam karta hai — asal se seekh kar."_  
+  Like a child who learns from the parent but adds their own style.
+
+- **Property overriding = "updated trait"**  
+  > _"Jaise asal mein teen kone thay, lekin rectangle ne chaar kar diye."_  
+  Like changing the number of corners from triangle to rectangle.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example 1 — Base class with open functions
+    open class Shape {
+        open fun draw() {              // can be overridden
+            println("Drawing a generic shape")
+        }
+
+        fun fill() {                   // not open → cannot be overridden
+            println("Filling the shape")
+        }
+    }
+
+    // Example 2 — Subclass overriding the function
+    class Circle : Shape() {
+        override fun draw() {          // overrides draw() from Shape
+            println("Drawing a circle")
+        }
+    }
+
+    // Example 3 — Overriding properties
+    open class Polygon : Shape() {
+        open val vertexCount: Int = 3  // open property for overriding
+        override fun draw() {          // can still override draw()
+            println("Drawing a polygon with $vertexCount vertices")
+        }
+    }
+
+    class Rectangle : Polygon() {
+        override val vertexCount: Int = 4   // override property value
+        override fun draw() {               // override function again
+            println("Drawing a rectangle with $vertexCount vertices")
+        }
+    }
+
+    // Example 4 — Using the classes
+    val shape = Shape()
+    val circle = Circle()
+    val polygon = Polygon()
+    val rectangle = Rectangle()
+
+    shape.draw()
+    shape.fill()
+
+    circle.draw()
+
+    polygon.draw()
+    rectangle.draw()
+
+    println("Rectangle vertex count: ${rectangle.vertexCount}")
+}
+```
