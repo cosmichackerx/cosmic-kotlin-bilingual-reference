@@ -1558,3 +1558,145 @@ fun main() {
     printProduct("6", "7") // Output: 42
 }
 ```
+---
+
+## 🔤 Definitions (Type Check and Automatic casts)
+
+- **`is` / `!is` operator**: Used to check if a value is (or is not) of a specific type.
+- **Smart cast**: Kotlin automatically casts a variable to its type after a successful `is` check.
+- **Nullable type (`Type?`)**: A type that can hold either a value or `null`.
+- **Safe call (`?.`)**: Accesses a property or method only if the object is not `null`.
+- **Elvis operator (`?:`)**: Provides a fallback value when the left side is `null`.
+- **`let` block**: Executes code only if the value is not `null`.
+- **Exception handling (`try-catch`)**: Catches runtime errors and allows fallback or error reporting.
+- **Nullable Boolean check**: Evaluates `true`, `false`, or `null` safely.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`is` = "ID check"**  
+  > _"Jaise dekhna ke banda student hai ya teacher."_  
+  Like checking someone's identity — student or teacher.
+
+- **Smart cast = "auto upgrade"**  
+  > _"Jaise pehchan hone ke baad system khud samajh jaye ke banda kaun hai."_  
+  Like the system automatically recognizing someone after ID verification.
+
+- **Nullable type = "maybe empty box"**  
+  > _"Jaise aik dabba jo ya to cheez rakhta hai ya khaali hota hai."_  
+  Like a box that may contain something — or be empty.
+
+- **Safe call (`?.`) = "safety belt"**  
+  > _"Null hone par crash se bachne ka tareeqa."_  
+  Like wearing a seatbelt to avoid a crash when something is `null`.
+
+- **Elvis operator (`?:`) = "backup plan"**  
+  > _"Agar pehla option fail ho jaye to doosra use karo."_  
+  Like using a backup if the first option fails.
+
+- **`let` = "conditional action"**  
+  > _"Agar cheez mil jaye to kaam karo — warna chhoro."_  
+  Like doing something only if the item is available.
+
+- **Exception handling = "fire extinguisher"**  
+  > _"Achanak error aaye to usay handle karna."_  
+  Like using a fire extinguisher when something goes wrong.
+
+- **Nullable Boolean = "truth detector"**  
+  > _"Jaise check karna ke jawab sach hai, jhoot hai, ya blank."_  
+  Like checking if the answer is true, false, or missing.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+import java.io.File // Import required for File class
+
+fun main() { 
+    // type check and automatic casts
+    /*
+     * The "is" operator checks if an expression is an instance of a type.
+     * If an immutable local variable or property is checked for a specific type,
+     * there is no need to cast it explicitly.
+     */
+
+    // Function version 1 — using 'is' for type check
+    fun getStringLength1(obj: Any): Int? {
+        if (obj is String) {
+            // `obj` is automatically cast to `String` in this branch
+            return obj.length
+        }
+        return null
+    }
+
+    // Function version 2 — using '!is' for type check
+    fun getStringLength2(obj: Any): Int? {
+        if (obj !is String) return null
+        return obj.length
+    }
+
+    // Working with nullable file list
+    val files = File("Test").listFiles()
+    println(files?.size ?: "empty") // Elvis operator fallback
+
+    // Safe call with Elvis operator
+    val values: Map<String, String>? = mapOf("email" to "user@example.com")
+    val email = values?.get("email") ?: throw IllegalStateException("Email is missing!")
+
+    // Nullable list example
+    val emails: List<String>? = listOf("user@example.com")
+    val mainEmail = emails?.firstOrNull() ?: ""
+
+    // Safe call with let block
+    val value: String? = "Kotlin"
+    value?.let {
+        println("Value is not null: $it")
+    }
+
+    // let with default value
+    val defaultValue = "Default"
+    val mapped = value?.let { transformValue(it) } ?: defaultValue
+    println("Mapped value: $mapped")
+
+    // Function using when and exception handling
+    fun transform(color: String): Int {
+        return when (color) {
+            "Red" -> 0
+            "Green" -> 1
+            "Blue" -> 2
+            else -> throw IllegalArgumentException("Invalid color param value")
+        }
+    }
+
+    // try-catch example
+    fun count(): Int {
+        return 10 / 2
+    }
+
+    fun test() {
+        val result = try {
+            count()
+        } catch (e: ArithmeticException) {
+            throw IllegalStateException(e)
+        }
+        println("Result: $result")
+    }
+
+    test()
+
+    // Nullable Boolean example
+    val b: Boolean? = true
+    if (b == true) {
+        println("b is true")
+    } else {
+        println("b is false or null")
+    }
+}
+
+// Dummy transformValue function for mapping example
+fun transformValue(input: String): String {
+    return input.uppercase()
+}
+```
