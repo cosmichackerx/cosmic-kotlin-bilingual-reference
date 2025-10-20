@@ -1307,3 +1307,51 @@ fun main() {
     }
 }
 ```
+---
+
+## 🔤 Definitions (While loop)
+
+- **`while` loop**: A control structure that repeatedly executes a block of code as long as a condition remains true.
+- **`listOf(...)`**: Creates an immutable list of elements.
+- **`index`**: A variable used to track the current position in a list.
+- **`items.size`**: Returns the total number of elements in the list.
+- **`println()`**: Prints output to the console.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`while` loop = "repeat until stop"**  
+  > _"Jaise aik kaam baar baar karna jab tak condition sahi ho."_  
+  Like repeating a task until the condition says stop.
+
+- **`index` = "position tracker"**  
+  > _"Jaise TV remote ka channel number — har waqt batata hai ke kahan ho."_  
+  Like a TV remote showing the current channel number.
+
+- **`items.size` = "list length"**  
+  > _"Jaise fruit basket mein kitne fruits hain — gin kar batana."_  
+  Like counting how many fruits are in the basket.
+
+- **`println()` = "speaker"**  
+  > _"Jaise koi cheez bol kar sunai jaye."_  
+  Like saying something out loud.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example: While loop demonstration
+    val items = listOf("apple", "banana", "kiwifruit") // List of fruits
+    var index = 0 // Starting index
+
+    // While loop runs as long as the condition is true
+    while (index < items.size) {
+        println("Item at index $index is ${items[index]}") // Prints item with index
+        index++ // Increment index to avoid infinite loop
+    }
+}
+```
