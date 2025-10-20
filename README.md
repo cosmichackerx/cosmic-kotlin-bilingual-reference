@@ -992,3 +992,73 @@ fun main() {
     val obj = Child()  // Create object of Child
     obj.bar()          // Calls overridden version from Child
 }
+```
+---
+
+## 🔤 Definitions (Properties in Interface)
+
+- **Interface**: A contract that defines abstract and optionally implemented members (functions or properties).
+- **Abstract property**: A property declared without a body — must be implemented by the class.
+- **Property with implementation**: A read-only property inside an interface that provides a default value.
+- **`override`**: Used to provide a concrete implementation of abstract members from an interface or superclass.
+- **Interface function using property**: Functions in interfaces can access both abstract and implemented properties.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Interface = "rulebook with examples"**  
+  > _"Jaise aik kitab jisme kuch kaam karne ke tareeqay likhe hain — kuch sirf headings, kuch poore."_  
+  Like a manual where some tasks are just listed, others are fully explained.
+
+- **Abstract property = "must-fill blank"**  
+  > _"Jaise form mein khaali jagah — har banda apna jawab likhe."_  
+  Like a blank in a form — everyone must fill it in.
+
+- **Property with implementation = "default answer"**  
+  > _"Jaise form mein kuch fields pehle se bharay huay hon."_  
+  Like pre-filled fields in a form — you can use them as-is.
+
+- **`override` = "personalized version"**  
+  > _"Jaise kisi ne asal tareeqa chhor kar apna naya tareeqa likh diya."_  
+  Like replacing the default method with your own.
+
+- **Interface function using property = "template with variables"**  
+  > _"Jaise aik sentence jisme naam aur umar insert karni ho."_  
+  Like a sentence that uses variables to complete itself.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// Interface can contain both abstract and concrete (implemented) properties and functions
+interface MyInterface {
+
+    // Abstract property — must be implemented by the class
+    val prop: Int
+
+    // Property with default implementation (read-only)
+    val propertyWithImplementation: String
+        get() = "foo"
+
+    // Function using the abstract property
+    fun foo() {
+        println(prop)
+    }
+}
+
+// Class implementing the interface
+class Child : MyInterface {
+
+    // Must override abstract property 'prop'
+    override val prop: Int = 29
+}
+
+// Main function — program entry point
+fun main() {
+    val obj = Child()         // Create object of Child
+    obj.foo()                 // Calls foo() → prints prop value (29)
+    println(obj.propertyWithImplementation) // Accesses implemented property "foo"
+}
+```
