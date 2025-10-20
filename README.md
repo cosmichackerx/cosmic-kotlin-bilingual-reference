@@ -1229,3 +1229,81 @@ fun main() {
     }
 }
 ```
+---
+
+## 🔤 Definitions (Range)
+
+- **Range (`1..5`)**: A sequence of values from a starting number to an ending number (inclusive).
+- **`downTo`**: Creates a descending range from a higher number to a lower one.
+- **`step`**: Skips values in the range by a fixed interval.
+- **`until`**: Creates a range that excludes the upper limit.
+- **`in` / `!in`**: Used to check if a value exists inside or outside a range.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Range = "number line"**  
+  > _"Jaise 1 se 5 tak ginti likhna."_  
+  Like writing numbers from 1 to 5.
+
+- **`downTo` = "reverse counting"**  
+  > _"Jaise 5 se 1 tak ulta ginna."_  
+  Like counting backwards from 5 to 1.
+
+- **`step` = "skip mode"**  
+  > _"Jaise har doosra number lena — 1, 3, 5."_  
+  Like picking every second number — 1, 3, 5.
+
+- **`until` = "stop before limit"**  
+  > _"Jaise 5 tak na jao — 4 pe ruk jao."_  
+  Like stopping at 4 instead of reaching 5.
+
+- **`in` / `!in` = "membership check"**  
+  > _"Jaise dekhna ke koi number group mein hai ya nahi."_  
+  Like checking if a number belongs to a group or not.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example 1: Range from 1 to 5 (inclusive)
+    for (i in 1..5) {
+        println(i) // Prints: 1, 2, 3, 4, 5
+    }
+
+    // Example 2: Range in reverse using downTo
+    for (i in 5 downTo 1) {
+        println(i) // Prints: 5, 4, 3, 2, 1
+    }
+
+    // Example 3: Range with step (skipping numbers)
+    for (i in 1..5 step 2) {
+        println(i) // Prints: 1, 3, 5
+    }
+
+    // Example 4: Reverse range with step
+    for (i in 5 downTo 1 step 2) {
+        println(i) // Prints: 5, 3, 1
+    }
+
+    // Example 5: Range using 'until' (excludes upper limit)
+    for (i in 0 until 5) {
+        println(i) // Prints: 0, 1, 2, 3, 4
+    }
+
+    // Example 6: Using range in condition check
+    val x = 2
+
+    if (x in 1..5) {
+        println("x is in the range from 1 to 5")
+    }
+
+    if (x !in 6..10) {
+        println("x is not in the range from 6 to 10")
+    }
+}
+```
