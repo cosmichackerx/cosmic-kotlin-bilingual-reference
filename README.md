@@ -638,7 +638,7 @@ fun main() {
 ![7](resources/7.png)
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Classes)
 
 - **`open` class**: Allows other classes to inherit from it. By default, Kotlin classes are final and cannot be extended.
 - **Primary constructor**: The main constructor declared in the class header. Used for initializing properties.
