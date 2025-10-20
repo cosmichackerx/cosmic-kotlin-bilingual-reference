@@ -908,31 +908,30 @@ fun main() {
 ## 💻 Code Example
 
 ```kotlin
+// Defining an interface — a contract that classes can implement
+interface MyInterface {
+
+    // Default method with implementation (optional)
+    fun bar() {
+        println("bar() function with default body")
+    }
+
+    // Abstract method (must be implemented by any class that implements this interface)
+    fun foo()
+}
+
+// A class implementing the interface
+class MyClass : MyInterface {
+    // Must override foo() because it has no default implementation
+    override fun foo() {
+        println("foo() function implemented in MyClass")
+    }
+}
+
+// Main function to test interface implementation
 fun main() {
-
-    // Defining an interface — a contract that classes can implement
-    interface MyInterface {
-
-        // Function with body (optional implementation allowed since Kotlin 1.2+)
-        fun bar() {
-            println("bar() function with body")
-        }
-
-        // Function without body — must be implemented by the class
-        fun foo()
-    }
-
-    // A class implementing the interface
-    class MyClass : MyInterface {
-        // Must override foo() because it has no default implementation
-        override fun foo() {
-            println("foo() function implemented in MyClass")
-        }
-    }
-
-    // Creating object and calling both methods
-    val obj = MyClass()
-    obj.foo()  // Calls implemented version
-    obj.bar()  // Calls default version from interface
+    val obj = MyClass()  // Create object of MyClass
+    obj.foo()             // Calls overridden function
+    obj.bar()             // Calls default function from interface
 }
 ```
