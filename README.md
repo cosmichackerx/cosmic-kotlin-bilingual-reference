@@ -873,3 +873,66 @@ fun main() {
     println("Name: $name, Age: $age")
 }
 ```
+---
+
+## 🔤 Definitions (Interfaces)
+
+- **Interface**: A blueprint or contract that defines functions a class must implement.
+- **`fun foo()`**: A function declared in the interface without a body — must be implemented by the class.
+- **`fun bar()`**: A function with a default body — optional for the implementing class to override.
+- **`override`**: A keyword used to provide a custom implementation of a function defined in an interface or superclass.
+- **Implementation**: The actual code written in a class to fulfill the contract defined by the interface.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Interface = "contract or promise"**  
+  > _"Jaise aik agreement jisme likha ho ke kya kaam karna hai."_  
+  Like a contract that says what tasks must be done.
+
+- **Function without body = "must-do task"**  
+  > _"Jaise boss ne kaha 'ye kaam zaroor karna hai' — detail baad mein tum likho."_  
+  Like a boss assigning a task — you must decide how to do it.
+
+- **Function with body = "optional helper"**  
+  > _"Jaise boss ne example bhi de diya — agar chaho to use karo."_  
+  Like a boss giving a sample solution — you can use it or write your own.
+
+- **`override` = "custom execution"**  
+  > _"Jaise kisi kaam ka apna tareeqa apna lena."_  
+  Like doing a task your own way instead of the default.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Defining an interface — a contract that classes can implement
+    interface MyInterface {
+
+        // Function with body (optional implementation allowed since Kotlin 1.2+)
+        fun bar() {
+            println("bar() function with body")
+        }
+
+        // Function without body — must be implemented by the class
+        fun foo()
+    }
+
+    // A class implementing the interface
+    class MyClass : MyInterface {
+        // Must override foo() because it has no default implementation
+        override fun foo() {
+            println("foo() function implemented in MyClass")
+        }
+    }
+
+    // Creating object and calling both methods
+    val obj = MyClass()
+    obj.foo()  // Calls implemented version
+    obj.bar()  // Calls default version from interface
+}
+```
