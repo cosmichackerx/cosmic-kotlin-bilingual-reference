@@ -935,3 +935,60 @@ fun main() {
     obj.bar()             // Calls default function from interface
 }
 ```
+---
+
+## 🔤 Definitions (Implementation)
+
+- **Interface**: A contract that defines behaviors (functions) a class must follow.
+- **Default implementation**: A function inside an interface that already has a body — can be used as-is or overridden.
+- **`override`**: A keyword used to replace the default behavior with a custom one in the implementing class.
+- **Implementing class**: A class that agrees to follow the interface and provide its own versions of the required functions.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Interface = "behavior contract"**  
+  > _"Jaise aik job description — har employee ko follow karna hota hai."_  
+  Like a job description — every employee must follow it.
+
+- **Default implementation = "ready-made solution"**  
+  > _"Jaise boss ne kaam ka tareeqa bhi bata diya — chaho to apna tareeqa use karo."_  
+  Like a boss giving a suggested method — you can use it or customize it.
+
+- **Override = "custom behavior"**  
+  > _"Jaise aik chef ne apni recipe mein thoda twist daal diya."_  
+  Like a chef adding their own twist to a standard recipe.
+
+- **Implementing class = "contract follower"**  
+  > _"Jaise aik student jo school ke rules follow karta hai."_  
+  Like a student who follows the school’s rules.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// Define an interface (a contract of behaviors)
+interface MyInterface {
+
+    // Function with a default implementation
+    fun bar() {
+        println("Default bar() from MyInterface")
+    }
+}
+
+// Class implementing the interface
+class Child : MyInterface {
+
+    // Overriding the interface function
+    override fun bar() {
+        println("bar() overridden in Child class")
+    }
+}
+
+// Main function — program entry point
+fun main() {
+    val obj = Child()  // Create object of Child
+    obj.bar()          // Calls overridden version from Child
+}
