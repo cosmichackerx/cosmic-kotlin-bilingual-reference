@@ -805,7 +805,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Data Classes)
 
 - **`data class`**: A special class in Kotlin designed to hold data. It automatically generates utility methods.
 - **`toString()`**: Returns a readable string representation of the object.
