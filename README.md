@@ -1489,3 +1489,72 @@ fun main() {
         .forEach { println(it) }          // Print each result
 }
 ```
+---
+
+## 🔤 Definitions (Nullable values and nullable checks)
+
+- **Nullable type (`Int?`)**: A type that can hold either a value or `null`. Marked with a `?` suffix.
+- **`toIntOrNull()`**: Converts a string to an integer, returns `null` if conversion fails.
+- **Null check (`x != null`)**: Ensures a value is not `null` before using it.
+- **Safe call**: A way to safely access or operate on nullable values without crashing.
+- **Error handling**: Providing fallback logic when something goes wrong (e.g., invalid input).
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Nullable type = "maybe empty box"**  
+  > _"Jaise aik dabba jo ya to cheez rakhta hai ya khaali hota hai."_  
+  Like a box that may contain something — or be empty.
+
+- **`toIntOrNull()` = "safe converter"**  
+  > _"Jaise number banane ki koshish — agar fail ho to 'null' de deta hai."_  
+  Like trying to make a number — if it fails, it gives you `null`.
+
+- **Null check = "safety gate"**  
+  > _"Jaise pehle check karna ke dabba khaali to nahi — phir use karna."_  
+  Like checking if the box is empty before using what's inside.
+
+- **Safe call = "no crash zone"**  
+  > _"Jaise pehle seatbelt pehn kar gaari chalana."_  
+  Like wearing a seatbelt before driving — prevents accidents.
+
+- **Error handling = "backup message"**  
+  > _"Agar kaam na ho to user ko samjha dena."_  
+  Like giving a polite message when something goes wrong.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Nullable values and null checks
+    /*
+     * A reference must be explicitly marked as nullable when a null value is possible.
+     * Nullable type names have a '?' at the end.
+     */
+
+    // First define helper function to safely parse string to Int (returns null if fails)
+    fun parseInt(str: String): Int? {
+        return str.toIntOrNull()
+    }
+
+    // Function to parse and multiply two string numbers safely
+    fun printProduct(arg1: String, arg2: String) {
+        val x = parseInt(arg1) // Convert first argument
+        val y = parseInt(arg2) // Convert second argument
+
+        // Check if both conversions succeeded (not null)
+        if (x != null && y != null) {
+            println(x * y) // Safe multiplication
+        } else {
+            println("'$arg1' or '$arg2' is not a number") // Error message
+        }
+    }
+
+    // Call the function with valid string numbers
+    printProduct("6", "7") // Output: 42
+}
+```
