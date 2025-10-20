@@ -716,7 +716,7 @@ fun main() {
 }
 ```
 ---
-
+![8](resources/8.png)
 ---
 
 ## 🔤 Definitions (Secondary constructor)
@@ -804,6 +804,8 @@ fun main() {
 }
 ```
 ---
+![9](resources/9.png)
+---
 
 ## 🔤 Definitions (Data Classes)
 
@@ -874,6 +876,8 @@ fun main() {
 }
 ```
 ---
+![10](resources/10.png)
+---
 
 ## 🔤 Definitions (Interfaces)
 
@@ -936,6 +940,8 @@ fun main() {
 }
 ```
 ---
+![11](resources/11.png)
+---
 
 ## 🔤 Definitions (Implementation)
 
@@ -993,6 +999,8 @@ fun main() {
     obj.bar()          // Calls overridden version from Child
 }
 ```
+---
+![12](resources/12.png)
 ---
 
 ## 🔤 Definitions (Properties in Interface)
@@ -1063,6 +1071,8 @@ fun main() {
 }
 ```
 ---
+![13](resources/13.png)
+---
 
 ## 🔤 Definitions (Comments)
 
@@ -1118,6 +1128,8 @@ fun main() {
 }
 ```
 ---
+![14](resources/14.png)
+---
 
 ## 🔤 Definitions (Conditions)
 
@@ -1170,6 +1182,8 @@ fun main() {
     println("The maximum number is $result")
 }
 ```
+---
+![15](resources/15.png)
 ---
 
 ## 🔤 Definitions (For Loop)
@@ -1229,6 +1243,8 @@ fun main() {
     }
 }
 ```
+---
+![16](resources/16.png)
 ---
 
 ## 🔤 Definitions (Range)
@@ -1307,6 +1323,7 @@ fun main() {
     }
 }
 ```
+![17](resources/17.png)
 ---
 
 ## 🔤 Definitions (While loop)
@@ -1355,6 +1372,8 @@ fun main() {
     }
 }
 ```
+---
+![18](resources/18.png)
 ---
 
 ## 🔤 Definitions (When)
@@ -1413,6 +1432,8 @@ fun main() {
     println(describe("Kotlin"))
 }
 ```
+---
+![19](resources/19.png)
 ---
 
 ## 🔤 Definitions (Collections)
@@ -1490,6 +1511,8 @@ fun main() {
 }
 ```
 ---
+![20](resources/20.png)
+---
 
 ## 🔤 Definitions (Nullable values and nullable checks)
 
@@ -1558,6 +1581,8 @@ fun main() {
     printProduct("6", "7") // Output: 42
 }
 ```
+---
+![21](resources/21.png)
 ---
 
 ## 🔤 Definitions (Type Check and Automatic casts)
@@ -1700,3 +1725,6 @@ fun transformValue(input: String): String {
     return input.uppercase()
 }
 ```
+---
+![22](resources/22.png)
+---
