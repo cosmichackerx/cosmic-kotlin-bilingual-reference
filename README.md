@@ -1355,3 +1355,61 @@ fun main() {
     }
 }
 ```
+---
+
+## 🔤 Definitions (When)
+
+- **`when` expression**: Kotlin’s flexible replacement for `switch`, used for matching values, types, or conditions.
+- **`is Type`**: Checks if a value is of a specific type.
+- **`!is Type`**: Checks if a value is *not* of a specific type.
+- **`Any`**: The root type of all non-nullable types in Kotlin — can hold any object.
+- **`else`**: Acts as a fallback when no other branch matches.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`when` = "multi-path decision gate"**  
+  > _"Jaise aik chowk jahan har raasta alag condition ka hai."_  
+  Like a junction where each path depends on a condition.
+
+- **`is Type` = "ID card check"**  
+  > _"Jaise dekhna ke banda student hai ya teacher."_  
+  Like checking if someone is a student or a teacher.
+
+- **`!is Type` = "not that category"**  
+  > _"Jaise kehna ke ye banda doctor nahi hai."_  
+  Like saying someone doesn’t belong to a certain category.
+
+- **`Any` = "universal container"**  
+  > _"Jaise aik box jisme kuch bhi ho sakta hai."_  
+  Like a box that can hold anything.
+
+- **`else` = "default backup"**  
+  > _"Agar koi condition match na kare to ye kaam karo."_  
+  If nothing matches, do this instead.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // 'when' expression example
+    fun describe(obj: Any): String = when (obj) {
+        1 -> "One"                   // Matches number 1
+        "Hello" -> "Greeting"        // Matches string "Hello"
+        is Long -> "Long"            // Checks if obj is of type Long
+        !is String -> "Not a String" // Checks if obj is NOT a String
+        else -> "Unknown"            // Default case for anything else
+    }
+
+    // Testing the function with different values
+    println(describe(1))
+    println(describe("Hello"))
+    println(describe(1000L))
+    println(describe(2.5))
+    println(describe("Kotlin"))
+}
+```
