@@ -719,7 +719,7 @@ fun main() {
 
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Secondary constructor)
 
 - **Primary constructor**: The main constructor declared in the class header, used to initialize properties.
 - **Secondary constructor**: An optional constructor declared inside the class body for alternative initialization logic.
