@@ -717,13 +717,16 @@ fun main() {
 ```
 ---
 
+---
+
 ## 🔤 Definitions
 
-- **Primary constructor**: The main constructor declared in the class header. Used for initializing properties.
+- **Primary constructor**: The main constructor declared in the class header, used to initialize properties.
 - **Secondary constructor**: An optional constructor declared inside the class body for alternative initialization logic.
 - **`init` block**: A special block that runs immediately when an object is created — before any secondary constructor.
+- **Private constructor**: A constructor that restricts object creation from outside the class.
+- **Constructor chaining**: When a secondary constructor calls the primary constructor using `: this(...)`.
 - **MutableList**: A list that can be modified — elements can be added, removed, or updated.
-- **Constructor chaining**: When one constructor calls another using `: this(...)`.
 
 ---
 
@@ -740,6 +743,10 @@ fun main() {
 - **`init` block = "welcome message"**  
   > _"Jaise ghar mein ghusne par pehle salam hoti hai."_  
   Like a greeting that happens as soon as someone enters.
+
+- **Private constructor = "no entry allowed"**  
+  > _"Jaise aik locked room — sirf andar se khula ja sakta hai."_  
+  Like a locked room — only accessible internally.
 
 - **Constructor chaining = "one setup calls another"**  
   > _"Jaise ek kaam karne se doosra kaam bhi ho jaye."_  
@@ -759,34 +766,40 @@ fun main() {
     // Class with primary and secondary constructors
     class Person(val name: String) {
 
-        // A mutable list to store Person's children
+        // Each person can have children (list of Person objects)
         val children: MutableList<Person> = mutableListOf()
 
-        // Secondary constructor — also adds the current Person as a child of the parent
+        // Secondary constructor — adds this new person to the parent's children list
         constructor(name: String, parent: Person) : this(name) {
             parent.children.add(this)
         }
     }
 
-    // Class with init block and secondary constructor
+    // Class with primary and secondary constructors
     class Constructors {
 
-        // 'init' block runs when an object is created (before constructor body)
+        // init block runs whenever an instance is created
         init {
-            println("Init block called!")
+            println("Primary constructor called (no parameters)")
         }
 
-        // Secondary constructor — runs after 'init' block
+        // Secondary constructor
         constructor(i: Int) {
-            println("Constructor with value: $i")
+            println("Secondary constructor called with value: $i")
         }
     }
 
-    // Example usage:
-    val parent = Person("Parent")
-    val child = Person("Child", parent)
+    // Example of a class with private constructor (cannot be instantiated outside)
+    class DontCreateMe private constructor() {
+        /*...*/
+    }
+
+    // --- Example Usage ---
+    val parent = Person("Alice")
+    val child = Person("Bob", parent)
     println("${parent.name}'s children: ${parent.children.map { it.name }}")
 
-    val obj1 = Constructors(5)
+    val obj1 = Constructors()
+    val obj2 = Constructors(10)
 }
 ```
