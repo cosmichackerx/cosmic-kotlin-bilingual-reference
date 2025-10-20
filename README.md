@@ -1413,3 +1413,79 @@ fun main() {
     println(describe("Kotlin"))
 }
 ```
+---
+
+## 🔤 Definitions (Collections)
+
+- **Collection**: A group of elements like lists, sets, or maps.
+- **`listOf(...)`**: Creates an immutable list of elements.
+- **`when` without argument**: A flexible conditional block that checks multiple boolean expressions.
+- **`in` keyword**: Checks if an element exists in a collection.
+- **`filter {}`**: Returns only the elements that match a given condition.
+- **`sortedBy {}`**: Sorts elements based on a given selector.
+- **`map {}`**: Transforms each element in a collection.
+- **`forEach {}`**: Applies an action to each element in a collection.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Collection = "basket of items"**  
+  > _"Jaise aik tokri mein phalon ka group."_  
+  Like a basket filled with fruits.
+
+- **`listOf(...)` = "ready-made list"**  
+  > _"Jaise ek tayar list jisme cheezein likhi hui hain."_  
+  Like a pre-written list of items.
+
+- **`when` without argument = "multi-condition checker"**  
+  > _"Jaise aik guard jo har condition alag alag check karta hai."_  
+  Like a guard checking multiple conditions one by one.
+
+- **`in` = "membership test"**  
+  > _"Jaise dekhna ke koi fruit tokri mein hai ya nahi."_  
+  Like checking if a fruit is in the basket.
+
+- **`filter` = "sieve"**  
+  > _"Jaise chhanni jo sirf chhoti cheezein nikalti hai."_  
+  Like a sieve that only lets specific items through.
+
+- **`sortedBy` = "alphabetical organizer"**  
+  > _"Jaise dictionary mein words A to Z ke hisaab se hon."_  
+  Like arranging words alphabetically in a dictionary.
+
+- **`map` = "transformer"**  
+  > _"Jaise har fruit ka naam capital letters mein badal dena."_  
+  Like converting each fruit name to uppercase.
+
+- **`forEach` = "do something with each"**  
+  > _"Jaise har item ko alag alag tareeqay se dikhana."_  
+  Like displaying each item one by one.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+    // Collections
+    // List of fruits
+    val items = listOf("apple", "banana", "kiwifruit")
+
+    // 'when' expression used without an argument to check conditions
+    when {
+        "orange" in items -> println("Juicy")         // Checks if "orange" is in the list
+        "apple" in items -> println("Apple is fine too") // Checks if "apple" is in the list
+    }
+
+    // Another list of fruits
+    val fruits = listOf("banana", "avocado", "kiwifruit","Apple","orange")
+
+    // Functional operations on the list
+    fruits
+        .filter { it.startsWith("a") }    // Keep only fruits starting with 'a'
+        .sortedBy { it }                  // Sort them alphabetically
+        .map { it.uppercase() }           // Convert each fruit name to uppercase
+        .forEach { println(it) }          // Print each result
+}
+```
