@@ -715,3 +715,78 @@ fun main() {
     println("Perimeter of rectangle: ${rect.perimeter}")
 }
 ```
+---
+
+## 🔤 Definitions
+
+- **Primary constructor**: The main constructor declared in the class header. Used for initializing properties.
+- **Secondary constructor**: An optional constructor declared inside the class body for alternative initialization logic.
+- **`init` block**: A special block that runs immediately when an object is created — before any secondary constructor.
+- **MutableList**: A list that can be modified — elements can be added, removed, or updated.
+- **Constructor chaining**: When one constructor calls another using `: this(...)`.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Primary constructor = "main gate"**  
+  > _"Jaise ghar ka asal darwaza — sabse pehla raasta andar aane ka."_  
+  Like the main entrance of a house — the default way to enter.
+
+- **Secondary constructor = "side gate"**  
+  > _"Jaise garage ka raasta — alternative tareeqa andar aane ka."_  
+  Like a side entrance — used when extra setup is needed.
+
+- **`init` block = "welcome message"**  
+  > _"Jaise ghar mein ghusne par pehle salam hoti hai."_  
+  Like a greeting that happens as soon as someone enters.
+
+- **Constructor chaining = "one setup calls another"**  
+  > _"Jaise ek kaam karne se doosra kaam bhi ho jaye."_  
+  Like doing one task that automatically triggers another.
+
+- **MutableList = "editable diary"**  
+  > _"Jaise aik diary jisme naye log likhe ja sakte hain."_  
+  Like a diary where new entries (children) can be added.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Class with primary and secondary constructors
+    class Person(val name: String) {
+
+        // A mutable list to store Person's children
+        val children: MutableList<Person> = mutableListOf()
+
+        // Secondary constructor — also adds the current Person as a child of the parent
+        constructor(name: String, parent: Person) : this(name) {
+            parent.children.add(this)
+        }
+    }
+
+    // Class with init block and secondary constructor
+    class Constructors {
+
+        // 'init' block runs when an object is created (before constructor body)
+        init {
+            println("Init block called!")
+        }
+
+        // Secondary constructor — runs after 'init' block
+        constructor(i: Int) {
+            println("Constructor with value: $i")
+        }
+    }
+
+    // Example usage:
+    val parent = Person("Parent")
+    val child = Person("Child", parent)
+    println("${parent.name}'s children: ${parent.children.map { it.name }}")
+
+    val obj1 = Constructors(5)
+}
+```
