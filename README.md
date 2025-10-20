@@ -1169,3 +1169,63 @@ fun main() {
     val result = maxOf(10, 5)
     println("The maximum number is $result")
 }
+```
+---
+
+## 🔤 Definitions (For Loop)
+
+- **`for` loop**: A control structure used to iterate over elements in a collection.
+- **`listOf(...)`**: Creates an immutable list of elements.
+- **`indices`**: A property that returns the valid index range of a list.
+- **`forEach`**: A Kotlin-style higher-order function that applies an action to each element in a collection.
+- **`println()`**: Prints output to the console.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`for` loop = "repeating reader"**  
+  > _"Jaise aik aadmi har item ko ek ek kar ke padhta hai."_  
+  Like someone reading each item one by one.
+
+- **`indices` = "index map"**  
+  > _"Jaise har item ka number likha ho — 0, 1, 2."_  
+  Like numbering each item in a list.
+
+- **`forEach` = "Kotlin-style loop"**  
+  > _"Jaise har fruit ko ek tareeqay se handle karna — bina index ke."_  
+  Like handling each fruit directly without worrying about its position.
+
+- **`listOf(...)` = "fruit basket"**  
+  > _"Jaise aik tokri mein sab fruits rakh diye gaye."_  
+  Like placing all fruits in a basket.
+
+- **`println()` = "speaker"**  
+  > _"Jaise koi cheez bol kar sunai jaye."_  
+  Like saying something out loud.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example 1: Simple for-loop over a list
+    val fruits = listOf("apple", "banana", "kiwifruit")
+    for (item in fruits) { 
+        println(item) // Prints each fruit in the list
+    }
+
+    // Example 2: Using index with 'indices' property
+    for (index in fruits.indices) {
+        // Access element using index
+        println("Item at index $index is ${fruits[index]}")
+    }
+
+    // Example 3: Using forEach loop (more Kotlin-style)
+    fruits.forEach { fruit ->
+        println("Fruit name: $fruit")
+    }
+}
+```
