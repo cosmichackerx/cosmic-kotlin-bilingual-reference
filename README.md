@@ -636,3 +636,82 @@ fun main() {
 }
 ```
 ![7](resources/7.png)
+---
+
+## 🔤 Definitions
+
+- **`open` class**: Allows other classes to inherit from it. By default, Kotlin classes are final and cannot be extended.
+- **Primary constructor**: The main constructor declared in the class header. Used for initializing properties.
+- **Secondary constructor**: An optional constructor declared inside the class body for alternative initialization.
+- **Constructor injection**: A technique where dependencies are passed directly into the constructor — often used in frameworks.
+- **Property declaration in constructor**: Kotlin allows concise property initialization directly in the constructor.
+- **Default parameter value**: A value assigned to a parameter if no argument is provided during object creation.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`open` = "permission to inherit"**  
+  > _"Jaise aik teacher ne kaha 'ye notes sab copy kar sakte hain'."_  
+  Like a teacher allowing everyone to copy the notes.
+
+- **Primary constructor = "main entry gate"**  
+  > _"Jaise ghar ka main darwaza — sabse pehla raasta andar aane ka."_  
+  Like the main door to a house — the primary way to enter.
+
+- **Secondary constructor = "side gate"**  
+  > _"Jaise garage ka raasta — alternative tareeqa andar aane ka."_  
+  Like a side entrance — an alternative way to enter.
+
+- **Constructor injection = "ready-made delivery"**  
+  > _"Jaise pizza order ke sath toppings already aa jayein."_  
+  Like getting a pizza with toppings already included.
+
+- **Property declaration in constructor = "one-line setup"**  
+  > _"Jaise aik hi line mein naam, umar aur kaam likh diya jaye."_  
+  Like writing name, age, and job in one line.
+
+- **Default value = "backup plan"**  
+  > _"Agar user kuch na de to system apna value use karega."_  
+  If no input is given, the system uses its own value.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+    // 'open' allows other classes to inherit this class
+    open class Shape
+
+    // 'Rectangle' extends 'Shape' and has two properties: height and length
+    class Rectangle(var height: Double, var length: Double) : Shape() {
+        var perimeter = (height + length) * 2  // property for perimeter
+    }
+
+    // A simple class with a primary constructor
+    class Person constructor(firstName: String) {
+        /*...*/
+    }
+
+    // Example of constructor injection (useful in dependency injection frameworks)
+    class Customer @Inject constructor(name: String) {
+        /*...*/
+    }
+
+    // Another class example with a primary constructor
+    class Person1(firstName: String) {
+        /*...*/
+    }
+
+    // Class with multiple properties in primary constructor
+    class Person2(val firstName: String, val lastName: String, var age: Int)
+
+    // Class with a default value for a property
+    class Person3(val firstName: String, val lastName: String, var isEmployed: Boolean = true)
+
+    // Example usage:
+    val rect = Rectangle(5.0, 10.0)
+    println("Perimeter of rectangle: ${rect.perimeter}")
+}
+```
