@@ -1062,3 +1062,58 @@ fun main() {
     println(obj.propertyWithImplementation) // Accesses implemented property "foo"
 }
 ```
+---
+
+## 🔤 Definitions (Comments)
+
+- **Single-line comment (`//`)**: Used to add short notes or explanations on a single line.
+- **Block comment (`/* ... */`)**: Used for multi-line explanations or to temporarily disable code blocks.
+- **Documentation comment (`/** ... */`)**: Known as KDoc in Kotlin — used to generate API documentation for classes, functions, and parameters.
+- **Inline comment**: A comment written on the same line as a statement, typically to explain that specific line.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Single-line comment = "quick whisper"**  
+  > _"Jaise kisi line ke saath chhoti si baat likh dena."_  
+  Like whispering a quick note beside a sentence.
+
+- **Block comment = "sticky note on code"**  
+  > _"Jaise aik bara sticky note jo poora code block cover karta hai."_  
+  Like placing a sticky note over a whole section of code.
+
+- **Documentation comment = "official label"**  
+  > _"Jaise kisi file ke upar likha ho 'ye kya karta hai' taake doosre samajh saken."_  
+  Like labeling a file with its purpose so others can understand it.
+
+- **Inline comment = "side note"**  
+  > _"Jaise kisi jumlay ke baad zara si wazahat likhna."_  
+  Like adding a small side note after a sentence.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// Comments
+
+// This is an end-of-line comment (single line)
+
+/*
+   This is a block comment
+   that spans multiple lines.
+   Useful for disabling or explaining code blocks.
+*/
+
+/**
+ * This is a documentation comment (KDoc)
+ * Used for generating documentation automatically.
+ * Example: functions, classes, parameters, etc.
+ */
+
+fun main() {
+    // You can add inline comments inside code too
+    println("Hello, Kotlin!") // Prints greeting message
+}
+```
