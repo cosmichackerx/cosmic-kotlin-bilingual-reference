@@ -1117,3 +1117,55 @@ fun main() {
     println("Hello, Kotlin!") // Prints greeting message
 }
 ```
+---
+
+## 🔤 Definitions (Conditions)
+
+- **Condition (`if-else`)**: A control structure that checks whether a statement is true or false and executes code accordingly.
+- **Function (`fun`)**: A reusable block of code that performs a specific task.
+- **Return statement**: Sends back a result from a function to the caller.
+- **Comparison operator (`>`)**: Checks if one value is greater than another.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Condition = "decision gate"**  
+  > _"Jaise aik chowk jahan condition ke mutabiq raasta chunta hai."_  
+  Like a junction where the path depends on the condition.
+
+- **Function = "task machine"**  
+  > _"Jaise aik chhoti factory jo har baar wahi kaam karti hai."_  
+  Like a mini factory that performs the same task every time.
+
+- **Return = "final answer delivery"**  
+  > _"Jaise exam ke baad result wapas milta hai."_  
+  Like receiving your result after an exam.
+
+- **`>` operator = "greater than check"**  
+  > _"Jaise do numbers ka muqabala — kaun bara hai."_  
+  Like comparing two numbers to see which one is bigger.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+    // Conditions
+    // Function to find the maximum of two numbers
+    fun maxOf(a: Int, b: Int): Int {
+        // If 'a' is greater than 'b', return 'a'
+        if (a > b) {
+            return a
+        } 
+        // Otherwise, return 'b'
+        else {
+            return b
+        }
+    }
+
+    // Example usage
+    val result = maxOf(10, 5)
+    println("The maximum number is $result")
+}
