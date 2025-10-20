@@ -803,3 +803,73 @@ fun main() {
     val obj2 = Constructors(10)
 }
 ```
+---
+
+## 🔤 Definitions
+
+- **`data class`**: A special class in Kotlin designed to hold data. It automatically generates utility methods.
+- **`toString()`**: Returns a readable string representation of the object.
+- **`equals()`**: Compares two objects for equality based on their properties.
+- **`hashCode()`**: Generates a hash value used in hashing structures like maps and sets.
+- **`copy()`**: Creates a new object with modified properties while keeping others unchanged.
+- **`componentN()`**: Enables destructuring declarations (e.g., `val (name, age) = user`).
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`data class` = "smart container"**  
+  > _"Jaise aik dabba jo apne andar ki cheezon ka pura record rakhta hai."_  
+  Like a box that keeps track of everything inside — name, age, etc.
+
+- **`toString()` = "self-introduction"**  
+  > _"Jaise banda apna naam aur umar bata raha ho."_  
+  Like someone introducing themselves with name and age.
+
+- **`copy()` = "clone with change"**  
+  > _"Jaise photocopy kar ke sirf aik cheez badal dena."_  
+  Like making a copy and changing just one detail.
+
+- **`equals()` = "identity check"**  
+  > _"Jaise do ID cards compare karna — dono same hain ya nahi."_  
+  Like comparing two ID cards to see if they match.
+
+- **Destructuring = "split and assign"**  
+  > _"Jaise aik box khol kar alag alag cheezein nikaal lena."_  
+  Like unpacking a box and assigning each item to a variable.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    /*
+     * Data classes are used to hold data.
+     * Kotlin automatically generates useful methods such as:
+     * - toString()  → for readable object output
+     * - equals()    → for object comparison
+     * - hashCode()  → for hashing
+     * - copy()      → for creating modified copies
+     * - componentN() functions for destructuring
+     */
+    data class User(val name: String, val age: Int)
+
+    // Creating an object of the data class
+    val user1 = User("Muhammad", 19)
+
+    // Printing object (uses auto-generated toString())
+    println(user1)
+
+    // Copying with modification
+    val user2 = user1.copy(age = 20)
+
+    // Comparing two data objects (uses auto-generated equals())
+    println(user1 == user2)
+
+    // Destructuring declaration
+    val (name, age) = user2
+    println("Name: $name, Age: $age")
+}
+```
