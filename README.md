@@ -1953,7 +1953,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Let)
 
 - **`let`**: A scoped function that executes code on the current object (`it`) and returns the last expression.
 - **Safe call (`?.`)**: Ensures that the object is not `null` before executing the `let` block.
