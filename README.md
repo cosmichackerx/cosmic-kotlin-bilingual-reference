@@ -1728,3 +1728,81 @@ fun transformValue(input: String): String {
 ---
 ![22](resources/22.png)
 ---
+---
+
+## 🔤 Definitions
+
+- **Infix function**: A function with a single parameter that can be called without dot or parentheses using infix notation.
+- **Extension function**: A function added to an existing type without modifying its source code.
+- **`to` function**: A built-in infix function that creates a `Pair` from two values.
+- **Custom infix**: A user-defined infix function that improves readability and expressiveness.
+- **Class member infix**: An infix function defined inside a class to express relationships or actions.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Infix = "natural sentence style"**  
+  > _"Jaise English mein likhna: Sophia likes Claudia."_  
+  Like writing code as if you're forming a natural sentence.
+
+- **Extension infix = "add-on behavior"**  
+  > _"Jaise kisi cheez mein naya feature add karna — bina asli cheez ko badle."_  
+  Like adding a new feature to something without changing its core.
+
+- **`to` = "pair maker"**  
+  > _"Jaise do cheezein jor kar aik jodi banana."_  
+  Like pairing two things together.
+
+- **Custom infix = "personalized connector"**  
+  > _"Jaise apni zubaan mein naya lafz banana jo kaam bataye."_  
+  Like inventing a new word that connects two ideas.
+
+- **Class member infix = "relationship builder"**  
+  > _"Jaise kisi shakhs ka doosre se rishta banana."_  
+  Like expressing a relationship between two people.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// Define a Person class with an infix function
+class Person(val name: String) {
+
+    // List of people this person likes
+    val likedPeople = mutableListOf<Person>()
+
+    // Infix function to express 'likes' relationship
+    infix fun likes(other: Person) {
+        likedPeople.add(other)
+    }
+}
+
+fun main() {
+    
+    // Member functions and extensions with a single parameter can be turned into infix functions
+
+    // 🔹 Infix Functions - Example 1
+    // Infix member function on Int
+    infix fun Int.times(str: String) = str.repeat(this)
+    println(2 times "Bye") // "ByeBye"
+
+    // 🔹 Infix 'to' function (built-in in Kotlin)
+    val pair = "Ferrari" to "Katrina"
+    println(pair) // (Ferrari, Katrina)
+
+    // 🔹 Custom infix extension on String
+    infix fun String.onto(other: String) = Pair(this, other)
+    val myPair = "Mclaren" onto "Lucas"
+    println(myPair) // (Mclaren, Lucas)
+
+    // 🔹 Using infix function defined in Person class
+    val sophia = Person("Sophia")
+    val claudia = Person("Claudia")
+    sophia likes claudia // Infix call (same as sophia.likes(claudia))
+
+    // Verify if Sophia liked Claudia
+    println("${sophia.name} likes ${sophia.likedPeople.first().name}")
+}
+```
