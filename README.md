@@ -1730,7 +1730,7 @@ fun transformValue(input: String): String {
 ---
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Infix Functions)
 
 - **Infix function**: A function with a single parameter that can be called without dot or parentheses using infix notation.
 - **Extension function**: A function added to an existing type without modifying its source code.
@@ -1804,5 +1804,64 @@ fun main() {
 
     // Verify if Sophia liked Claudia
     println("${sophia.name} likes ${sophia.likedPeople.first().name}")
+}
+```
+---
+
+## 🔤 Definitions (Equality Checks)
+
+- **`==` (Structural Equality)**: Compares the *content* of two objects. Equivalent to `a.equals(b)` in Java.
+- **`===` (Referential Equality)**: Compares whether two references point to the *exact same object* in memory.
+- **`setOf(...)`**: Creates an immutable set — a collection of unique elements where order doesn’t matter.
+- **Equality check**: Used to determine if two values or objects are considered equal by content or by reference.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`==` = "content checker"**  
+  > _"Jaise do kitaabein alag hoon lekin dono mein wohi kahani likhi ho."_  
+  Like two books with the same story inside — content is equal.
+
+- **`===` = "identity checker"**  
+  > _"Jaise dekhna ke dono kitaabein ek hi copy hain — ek hi shelf par."_  
+  Like checking if both books are the exact same physical copy.
+
+- **Set comparison = "ingredient match"**  
+  > _"Jaise do tokriyon mein wohi phal hon — chahe order alag ho."_  
+  Like two baskets with the same fruits — even if arranged differently.
+
+- **Memory reference = "same address"**  
+  > _"Jaise dono cheezein ek hi ghar mein rehti hoon."_  
+  Like checking if two things live at the same address.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+    // Equality check
+    /*
+      Kotlin uses:
+      ==  → Structural comparison (checks *content equality*)
+      === → Referential comparison (checks *memory reference*)
+      
+      More precisely:
+      a == b  → Compiles to: if (a == null) (b == null) else a.equals(b)
+    */
+
+    // Two sets with the same elements but different declaration order
+    val authors = setOf("Shakespeare", "Hemingway", "Twain")
+    val writers = setOf("Twain", "Shakespeare", "Hemingway")
+
+    // Structural comparison
+    println(authors == writers)  // true → same elements, order doesn't matter in sets
+
+    // Referential comparison
+    println(authors === writers) // false → different objects in memory
+
+    // 1️⃣ == compares content (via equals)
+    // 2️⃣ === compares reference (same memory object or not)
 }
 ```
