@@ -1807,6 +1807,8 @@ fun main() {
 }
 ```
 ---
+![23](resources/23.png)
+---
 
 ## 🔤 Definitions (Equality Checks)
 
@@ -1865,6 +1867,8 @@ fun main() {
     // 2️⃣ === compares reference (same memory object or not)
 }
 ```
+---
+![24](resources/24.png)
 ---
 
 ## 🔤 Definitions (Scoped Functions)
@@ -1951,6 +1955,8 @@ fun main() {
     println("apply: $builder")
 }
 ```
+---
+![25](resources/25.png)
 ---
 
 ## 🔤 Definitions (Let)
@@ -2057,3 +2063,6 @@ fun main() {
     */
 }
 ```
+---
+![26](resources/26.png)
+---
