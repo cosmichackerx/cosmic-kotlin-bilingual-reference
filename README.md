@@ -1867,7 +1867,7 @@ fun main() {
 ```
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Scoped Functions)
 
 - **Scoped Functions**: Functions that execute a block of code within the context of an object.
 - **`let`**: Executes code only if the object is non-null and returns the result of the lambda.
