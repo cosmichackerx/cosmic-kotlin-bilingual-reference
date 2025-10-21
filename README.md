@@ -1951,3 +1951,109 @@ fun main() {
     println("apply: $builder")
 }
 ```
+---
+
+## 🔤 Definitions
+
+- **`let`**: A scoped function that executes code on the current object (`it`) and returns the last expression.
+- **Safe call (`?.`)**: Ensures that the object is not `null` before executing the `let` block.
+- **Lambda parameter (`it` or custom name)**: Refers to the object inside the scoped function.
+- **Transformation**: Changing or computing values from a collection or object.
+- **Chaining**: Linking multiple operations together in a readable flow.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`let` = "temporary workspace"**  
+  > _"Jaise aik chhoti jagah jahan kaam ho kar result milta hai."_  
+  Like a small workspace where you do something and get a result.
+
+- **Safe call (`?.`) = "gatekeeper"**  
+  > _"Pehle check karo ke cheez hai — phir kaam karo."_  
+  First check if the item exists — then proceed.
+
+- **`it` = "current item"**  
+  > _"Jaise abhi jis cheez par kaam ho raha hai."_  
+  Like the item currently being worked on.
+
+- **Custom lambda name = "nickname for clarity"**  
+  > _"Jaise kisi ko naam de kar baat karna — confusion kam."_  
+  Like giving someone a name to make conversation clearer.
+
+- **Transformation = "makeover"**  
+  > _"Jaise purani cheez ko naya roop dena."_  
+  Like giving something a new look.
+
+- **Chaining = "assembly line"**  
+  > _"Jaise ek ke baad ek kaam hota jaye."_  
+  Like tasks flowing one after another in a line.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Example class
+    class Person {
+        var name: String = "Abcd"
+        var contactNumber: String = "1234567890"
+        var address: String = "xyz"
+
+        // Function to display info
+        fun displayInfo() = println(
+            "\nName: $name\nContact Number: $contactNumber\nAddress: $address"
+        )
+    }
+
+    // -------------------------
+    // Example 1: Using 'let' to return a computed value
+    val result1 = Person().let {
+        "The name of the Person is: ${it.name}" // 'it' refers to the Person object
+    }
+    println(result1)
+
+    // -------------------------
+    // Example 2: Modifying object inside 'let'
+    val person1 = Person().let {
+        it.name = "NewName" // change property
+        it // return the modified object
+    }
+    person1.displayInfo()
+
+    // -------------------------
+    // Example 3: Using custom lambda name for clarity
+    val person2 = Person().let { personDetails ->
+        personDetails.name = "Sophia"
+        personDetails
+    }
+    person2.displayInfo()
+
+    // -------------------------
+    // Example 4: Safe call with nullable type and 'let'
+    var name: String? = "Abcd"
+    name?.let {
+        println("The name of the Person is: $it") // executes only if name is not null
+    }
+
+    // -------------------------
+    // Example 5: Using let for list transformations
+    val numbers = mutableListOf("One", "Two", "Three", "Four", "Five")
+    val resultList = numbers.map { it.length }.filter { it > 3 } // map + filter
+    println(resultList)
+
+    // Using 'let' for chaining + printing directly
+    numbers.map { it.length }.filter { it > 3 }.let {
+        println(it) // prints filtered list
+    }
+
+    /*
+     'let' Summary:
+      ✅ Executes code on the current object ('it')
+      ✅ Returns the last expression inside the block
+      ✅ Great for null checks, transformations, and scoping temporary variables
+    */
+}
+```
