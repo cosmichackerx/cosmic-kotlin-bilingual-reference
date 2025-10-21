@@ -1865,3 +1865,89 @@ fun main() {
     // 2️⃣ === compares reference (same memory object or not)
 }
 ```
+---
+
+## 🔤 Definitions
+
+- **Scoped Functions**: Functions that execute a block of code within the context of an object.
+- **`let`**: Executes code only if the object is non-null and returns the result of the lambda.
+- **`run`**: Executes a block and returns the result — often used for object configuration or expressions.
+- **`with`**: Used to operate on an object without extending it — returns the result of the lambda.
+- **`also`**: Executes a block and returns the original object — useful for side effects like logging.
+- **`apply`**: Executes a block and returns the object itself — commonly used for object initialization.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **Scoped Function = "object zone"**  
+  > _"Jaise aik mehfil jahan sab kaam ek hi shakhs ke hawalay se ho rahe hain."_  
+  Like a gathering where all actions revolve around one person.
+
+- **`let` = "conditional doer"**  
+  > _"Agar cheez mil jaye to kaam karo."_  
+  Like doing something only if the item exists.
+
+- **`run` = "expression runner"**  
+  > _"Jaise aik kaam turant karna aur nateeja lena."_  
+  Like running a task and getting the result immediately.
+
+- **`with` = "guest mode"**  
+  > _"Jaise kisi mehmaan ke liye kaam karna — bina usay badle."_  
+  Like doing things for a guest without changing them.
+
+- **`also` = "sidekick"**  
+  > _"Jaise kaam ke saath saath ek aur kaam bhi ho jaye."_  
+  Like doing a side task while keeping the main object intact.
+
+- **`apply` = "self-customizer"**  
+  > _"Jaise koi apne liye settings set kar raha ho."_  
+  Like someone customizing themselves during setup.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// Scoped Functions
+/*
+    - By definition, Scoped functions are functions that execute a block of code within the context
+      of an object.
+    - In Software Development, things are only better understood by implementing rather than reading.
+    - There are five scoped functions in Kotlin: let, run, with, also, and apply. Let's go through
+      them one by one.
+*/
+
+fun main() {
+    val name: String? = "Kotlin"
+
+    // 🔹 let — executes only if not null
+    name?.let {
+        println("let: Value is $it")
+    }
+
+    // 🔹 run — executes and returns result
+    val length = name?.run {
+        println("run: Length is $length")
+        length
+    }
+
+    // 🔹 with — used with non-null object
+    val result = with(name!!) {
+        println("with: Uppercase is ${uppercase()}")
+        length
+    }
+
+    // 🔹 also — returns original object, useful for side effects
+    val processed = name?.also {
+        println("also: Logging value $it")
+    }
+
+    // 🔹 apply — returns object itself, used for configuration
+    val builder = StringBuilder().apply {
+        append("Hello, ")
+        append("Scoped Functions!")
+    }
+    println("apply: $builder")
+}
+```
