@@ -637,6 +637,32 @@ fun main() {
     println("After swap (String list):  $stringList")
 }
 ```
+---
+## 🧠 Mnemonic (Urdu-English Analogy)
+   "Main ke andar likho to mehmaan hai, bahar likho to makaan hai!" If you define it inside main(), it's like a guest — temporary and limited. Define it outside, and it's like a house — permanent and accessible from anywhere.
+---
+## 🔁 Refactored Example (Top-level Extension Function)
+```kotlin
+// Extension function for MutableList<T>
+fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
+    val tmp = this[index1]
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
+
+fun main() {
+    val intList = mutableListOf(1, 2, 3)
+    println("Before swap (Int list): $intList")
+    intList.swap(0, 2)
+    println("After swap (Int list):  $intList\n")
+
+    val stringList = mutableListOf("A", "B", "C")
+    println("Before swap (String list): $stringList")
+    stringList.swap(0, 2)
+    println("After swap (String list):  $stringList")
+}
+```
+---
 ![7](resources/7.png)
 ---
 
