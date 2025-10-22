@@ -2670,3 +2670,102 @@ Address: Neverland
 Result of 'run': Person details saved successfully ✅
 ```
 ---
+---
+
+## 🔤 Definitions (Also)
+
+- **`also`**: A scoped function that uses `it` to refer to the object and always returns the original object.
+- **Side effects**: Actions like logging, debugging, or temporary modifications that don’t change the return value.
+- **Chaining**: Linking multiple operations while preserving the original object.
+- **Null safety**: Kotlin’s feature to prevent crashes by checking for `null` before executing code.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`also` = "sidekick mode"**  
+  > _"Jaise kaam ke saath saath ek aur kaam bhi ho raha ho."_  
+  Like doing a side task while keeping the main object intact.
+
+- **Returns original object = "unchanged courier"**  
+  > _"Jaise delivery boy jo parcel de kar wapas chala jata hai — parcel nahi badalta."_  
+  Like a courier who delivers and leaves — the package stays the same.
+
+- **`it` = "external pointer"**  
+  > _"Jaise kisi cheez ko 'it' keh kar kaam karna."_  
+  Like pointing to something and working on it using “it”.
+
+- **Side effects = "extra notes"**  
+  > _"Jaise kisi file ke sath sticky note lagana — file to wahi rehti hai."_  
+  Like adding a sticky note to a file — the file itself doesn’t change.
+
+- **Chaining = "assembly line"**  
+  > _"Jaise ek ke baad ek kaam hota jaye — bina cheez badle."_  
+  Like a sequence of tasks that don’t alter the item being processed.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// A simple Person class for demonstration
+class Person {
+    var name: String = "Abcd"
+    var contactNumber: String = "1234567890"
+    var address: String = "XYZ"
+
+    fun displayInfo() {
+        println("Name: $name")
+        println("Contact: $contactNumber")
+        println("Address: $address")
+    }
+}
+
+fun main() {
+    // Also
+    /*
+        The 'also' function is similar to 'let' in many ways:
+        - It refers to the object as 'it', not 'this'.
+        - It provides null-safety checks.
+        - It always returns the original object, not the result of the block.
+        - Commonly used when you want to perform side effects (like logging or debugging)
+          while keeping the original object intact.
+    */
+
+    // Example 1 — Using 'also' with a Person object
+    val nameResult = Person().also { currentPerson ->
+        // 'it' (or renamed to currentPerson) refers to the object here
+        println("Current name is: ${currentPerson.name}\n")
+        currentPerson.name = "ModifiedName" // modifying the name
+    }.run {
+        // 'run' executes after 'also' and can return a result
+        "Modified name is: $name\n"
+    }
+
+    println(nameResult) // prints the returned string from 'run'
+
+    // Example 2 — Using 'also' with a list
+    val list = mutableListOf(1, 2, 3)
+    // Perform multiple operations while keeping the same list object
+    list.also {
+        it.add(4)
+        it.remove(2)
+        // More operations can be done here if needed
+    }
+    println(list) // prints [1, 3, 4]
+    
+    /*
+        The advantage of using "also" operator is that while doing a chain of operations, this
+        operator helps in evaluating the current operating value if required
+    */
+}
+```
+## ✅ Output:
+```pgsql
+Current name is: Abcd
+
+Modified name is: ModifiedName
+
+[1, 3, 4]
+```
+---
