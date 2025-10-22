@@ -2198,29 +2198,34 @@ fun main(args: Array<String>) {
 ```
 ---
 ---
+---
 
 ## 🔤 Definitions (Run vs Let)
 
-- **`run`**: A scoped function that executes code in the context of the object (`this`) and returns the last expression.
-- **`let`**: A scoped function that uses `it` to refer to the object and returns the last expression.
+- **`run`**: A scoped function that uses `this` to refer to the context object and returns the last expression.
+- **`let`**: A scoped function that uses `it` to refer to the context object and returns the last expression.
+- **`this` vs `it`**: `this` is implicit and used inside `run`, while `it` is explicit and used inside `let`.
 - **Nullable property**: A variable that can hold either a value or `null`, marked with `?`.
-- **Context object**: The object on which the scoped function is operating.
 
 ---
 
 ## 🧠 Mnemonics & Analogies (English + Urdu)
 
-- **`run` = "self zone"**  
-  > _"Jaise banda apne naam se kaam kar raha ho — bina kisi aur ke reference."_  
-  Like someone working directly with their own identity.
+- **`run` = "self-speaking mode"**  
+  > _"Jaise shakhs apne baare mein khud baat kar raha ho."_  
+  Like someone speaking directly about themselves.
 
-- **`let` = "external pointer"**  
-  > _"Jaise kisi ko 'it' keh kar kaam karna."_  
-  Like referring to someone as “it” while working with them.
+- **`let` = "pointing mode"**  
+  > _"Jaise kisi cheez ko 'it' keh kar us par kaam karna."_  
+  Like pointing to something and working on it using “it”.
 
-- **`this` = "main actor"**  
-  > _"Jaise stage par sirf ek hero ho — aur sab spotlight us par ho."_  
-  Like the hero on stage — everything revolves around them.
+- **`this` = "main character spotlight"**  
+  > _"Jaise stage par hero ho — bina naam liye sab usi par focus."_  
+  Like the hero on stage — everything refers to them without naming.
+
+- **`it` = "external reference"**  
+  > _"Jaise kisi ko door se dekh kar kaam karna."_  
+  Like referring to someone from a distance.
 
 - **Nullable property = "maybe present"**  
   > _"Jaise dabba ho jisme kuch ho bhi sakta hai, nahi bhi."_  
@@ -2231,36 +2236,45 @@ fun main(args: Array<String>) {
 ## 💻 Code Example
 
 ```kotlin
-// Define a simple Person class with a nullable name property
+// Define a simple Person class
 class Person {
-    var name: String? = "John Doe"
+    var name: String? = "Abcd"
 }
 
-// Define a Company class
+// Define a Company class to demonstrate 'run' and 'let'
 class Company {
 
-    // Run vs Let explanation:
     /*
-       The difference is:
-       - "run" refers to the context object as **this**
-       - "let" refers to the context object as **it**
-       Hence, inside "run", we can access properties directly (e.g., name)
-       without needing "this.name" or "it.name".
+      run vs let:
+      - 'run' refers to the object as 'this' (implicit reference)
+      - 'let' refers to the object as 'it' (explicit reference)
+      So inside 'run', we directly use properties without 'it',
+      while inside 'let' we must use 'it.property'
     */
-    var name: String? = "Abcd"
 
-    // Function demonstrating the use of 'run'
+    // Example using 'run'
     fun performRunOperation() {
         val result = Person().name?.run {
-            "The name of the person is: $this"  // 'this' refers to the String inside 'name'
+            // 'this' refers to the value of 'name' here
+            "The name of the person (using run) is: $this"
+        }
+        println(result)
+    }
+
+    // Example using 'let'
+    fun performLetOperation() {
+        val result = Person().name?.let {
+            // 'it' refers to the value of 'name' here
+            "The name of the person (using let) is: $it"
         }
         println(result)
     }
 }
 
-// Main function to run the program
+// Main function to execute both examples
 fun main() {
-    val company = Company()     // create an object of Company
-    company.performRunOperation() // call the function
+    val company = Company()
+    company.performRunOperation()
+    company.performLetOperation()
 }
 ```
