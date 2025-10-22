@@ -2278,3 +2278,93 @@ fun main() {
     company.performLetOperation()
 }
 ```
+---
+---
+
+## 🔤 Definitions
+
+- **`with`**: A scoped function that takes an object as an argument and executes a block with `this` as the context.
+- **`this`**: Refers to the object passed into `with`, allowing direct access to its members.
+- **`apply`**: A scoped function that configures an object and returns the object itself — often used for initialization.
+- **Context object**: The object being operated on inside the scoped function.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`with` = "guest mode block"**  
+  > _"Jaise kisi mehmaan ke sath baith kar usi ke hawalay se baat karna."_  
+  Like sitting with a guest and talking only about them.
+
+- **`this` = "main focus"**  
+  > _"Jaise spotlight sirf ek shakhs par ho — har baat usi ke mutaliq."_  
+  Like a spotlight on one person — everything is about them.
+
+- **`apply` = "self-setup"**  
+  > _"Jaise koi apne aap ko tayar kar raha ho — naam, kaam, pehchaan."_  
+  Like someone setting themselves up — name, purpose, identity.
+
+- **`with(obj)` vs `obj.run` = "outside-in vs inside-out"**  
+  > _"`with` mein object ko bahar se diya jata hai, jabke `run` mein object khud call karta hai."_  
+  In `with`, the object is passed in from outside; in `run`, the object calls the block itself.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// Define a simple Person class for demonstration
+class Person {
+    var name: String = "Abcd"
+}
+
+// Define the Company class
+class Company {
+    lateinit var name: String
+    lateinit var objective: String
+    lateinit var founder: String
+}
+
+fun main() {
+    // -----------------------------------------------
+    // "with" operator in Kotlin
+    /*
+        The "with" operator is similar to the "run" operator.
+        Both use "this" as the context reference.
+        The difference is:
+        - "with" is called as: with(object) { ... }
+        - "run" is called as: object.run { ... }
+    */
+    // -----------------------------------------------
+
+    // Example 1: Using "with" on a Person object
+    val result = with(Person()) {
+        // Inside 'with', 'this' refers to the Person instance
+        "The name of the Person is: ${this.name}"
+    }
+    println(result)
+
+    // Example 2: Using "with" on a Company object
+    val gfg = Company().apply {
+        // 'apply' is used for initialization
+        name = "GeeksforGeeks"
+        objective = "A computer science portal for Geeks"
+        founder = "Sandeep Jain"
+    }
+
+    // Now use 'with' to access Company properties easily
+    with(gfg) {
+        // 'this' refers to gfg
+        println("Company Name: $name")
+        println("Objective: $objective")
+        println("Founder: $founder")
+    }
+}
+```
+---
+```yaml
+The name of the Person is: Abcd
+Company Name: GeeksforGeeks
+Objective: A computer science portal for Geeks
+Founder: Sandeep Jain
+```
