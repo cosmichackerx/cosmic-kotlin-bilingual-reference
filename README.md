@@ -2199,6 +2199,7 @@ fun main(args: Array<String>) {
 }
 ```
 ---
+![27](resources/27.png)
 ---
 
 ## 🔤 Definitions (Run vs Let)
@@ -2280,6 +2281,7 @@ fun main() {
 }
 ```
 ---
+![28](resources/28.png)
 ---
 
 ## 🔤 Definitions (With)
