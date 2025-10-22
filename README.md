@@ -2066,3 +2066,133 @@ fun main() {
 ---
 ![26](resources/26.png)
 ---
+---
+
+## 🔤 Definitions (Run)
+
+- **`run`**: A scoped function that executes a block of code in the context of the object (`this`) and returns the last expression.
+- **`this` keyword**: Refers to the current object inside the `run` block.
+- **Object initialization**: Setting up properties or configuration when creating an object.
+- **Chained computation**: Performing multiple steps in sequence and returning a final result.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`run` = "self-focused task runner"**  
+  > _"Jaise koi shakhs apne kaam khud kar raha ho aur nateeja bhi khud deta ho."_  
+  Like someone doing their own tasks and giving back a result.
+
+- **`this` = "main character"**  
+  > _"Jaise kahani ka hero — jis par sab kuch ho raha hai."_  
+  Like the hero of the story — everything revolves around them.
+
+- **Initialization = "setup mode"**  
+  > _"Jaise nayi machine ko pehli baar chalane se pehle tayar karna."_  
+  Like preparing a new machine before its first use.
+
+- **Chained computation = "step-by-step recipe"**  
+  > _"Jaise ek ke baad ek step follow kar ke final dish banana."_  
+  Like following steps to cook a final dish.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+    // > Run
+    /*
+      The "run" operator is similar to "let":
+      ✅ It returns the last expression inside its block.
+      ✅ Inside the block, 'this' refers to the current object.
+      ✅ Often used for object initialization and returning computed results.
+    */
+
+    // Example class
+    class Person {
+        var name: String = "Abcd"
+        var contactNumber: String = "1234567890"
+
+        fun displayInfo() =
+            "Name: $name | Contact: $contactNumber"
+    }
+
+    // -------------------------
+    // Example 1: Using 'run' to initialize and return a result
+    val personResult = Person().run {
+        name = "Asdf"
+        contactNumber = "0987654321"
+        // Return a custom string instead of the object itself
+        "The details of the Person are: ${displayInfo()}"
+    }
+    println(personResult)
+
+    // -------------------------
+    // Example 2: Using 'run' for chained initialization and return
+    class PasswordGenerator {
+        var seed: String = ""
+        var hash: (String) -> String = { it }
+        var hashRepetitions: Int = 1
+
+        fun generate(): String {
+            var result = seed
+            repeat(hashRepetitions) { result = hash(result) }
+            return result
+        }
+    }
+
+    // Helper hash function
+    fun someHash(input: String) = input.reversed() + "!"
+
+    // Initialize PasswordGenerator using 'run'
+    val password: String = PasswordGenerator().run {
+        seed = "someString"
+        hash = { s -> someHash(s) }
+        hashRepetitions = 3
+        generate() // returns the final generated password
+    }
+
+    println("Generated Password: $password")
+
+    /*
+      Summary:
+      - 'run' is useful when:
+        • You want to work with object members directly (via 'this').
+        • You need to return a custom result from the block.
+        • You want to combine initialization + computation in one go.
+    */
+}
+```
+---
+```Kotlin
+// Define a Company class with lateinit properties (initialized later)
+class Company {
+    lateinit var name: String
+    lateinit var objective: String
+    lateinit var founder: String
+}
+
+fun main(args: Array<String>) {
+    println("Company Name:")
+
+    var company: Company? = null // nullable company object
+
+    // Will not execute because company is null
+    company?.run {
+        println(name)
+    }
+
+    // Initialize company using 'apply' — sets values and returns the object
+    company = Company().apply {
+        name = "GeeksforGeeks"
+        founder = "Sandeep Jain"
+        objective = "A computer science portal for Geeks"
+    }
+
+    // 'run' executes only if company is non-null
+    company?.run {
+        println(name) // prints: GeeksforGeeks
+    }
+}
+```
