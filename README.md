@@ -589,7 +589,8 @@ fun main() {
 - **Extension Function = "add-on skill"**  
   > _"Jaise aik aadmi ko nayi skill sikhana bina uski asal shakl badle."_  
   Like teaching someone a new skill without changing who they are.
-  > "Main ke andar likho to mehmaan hai, bahar likho to makaan hai!"
+  
+  > _"Main ke andar likho to mehmaan hai, bahar likho to makaan hai!"
   If you define it inside main(), it's like a guest — temporary and limited. Define it outside, and it's like a house — permanent and accessible from anywhere.
 
 - **`this` = "current object pointer"**  
