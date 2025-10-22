@@ -2371,7 +2371,6 @@ Founder: Sandeep Jain
 ```
 ---
 ---
----
 
 ## 🔤 Definitions
 
