@@ -590,7 +590,7 @@ fun main() {
   > _"Jaise aik aadmi ko nayi skill sikhana bina uski asal shakl badle."_  
   Like teaching someone a new skill without changing who they are.
   
-  > _"Main ke andar likho to mehmaan hai, bahar likho to makaan hai!"
+  > _"Main ke andar likho to mehmaan hai, bahar likho to makaan hai!"_
   If you define it inside main(), it's like a guest — temporary and limited. Define it outside, and it's like a house — permanent and accessible from anywhere.
 
 - **`this` = "current object pointer"**  
