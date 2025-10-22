@@ -589,6 +589,8 @@ fun main() {
 - **Extension Function = "add-on skill"**  
   > _"Jaise aik aadmi ko nayi skill sikhana bina uski asal shakl badle."_  
   Like teaching someone a new skill without changing who they are.
+  > "Main ke andar likho to mehmaan hai, bahar likho to makaan hai!"
+  If you define it inside main(), it's like a guest — temporary and limited. Define it outside, and it's like a house — permanent and accessible from anywhere.
 
 - **`this` = "current object pointer"**  
   > _"Jaise 'main khud' — jab koi banda apne baare mein baat karta hai."_  
@@ -637,10 +639,6 @@ fun main() {
     println("After swap (String list):  $stringList")
 }
 ```
----
-## 🧠 Mnemonic (Urdu-English Analogy)
-   "Main ke andar likho to mehmaan hai, bahar likho to makaan hai!" If you define it inside main(), it's like a guest — temporary and limited. Define it outside, and it's like a house — permanent and accessible from anywhere.
----
 ## 🔁 Refactored Example (Top-level Extension Function)
 ```kotlin
 // Extension function for MutableList<T>
