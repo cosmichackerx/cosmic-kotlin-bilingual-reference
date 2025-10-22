@@ -2282,7 +2282,7 @@ fun main() {
 ---
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (With)
 
 - **`with`**: A scoped function that takes an object as an argument and executes a block with `this` as the context.
 - **`this`**: Refers to the object passed into `with`, allowing direct access to its members.
@@ -2372,7 +2372,7 @@ Founder: Sandeep Jain
 ---
 ---
 
-## 🔤 Definitions
+## 🔤 Definitions (Run vs With)
 
 - **`with(obj)`**: A scoped function used when the object is non-null. Executes a block with `this` referring to the object.
 - **`obj?.run {}`**: A scoped function used for nullable objects. Executes the block only if the object is not null.
