@@ -2361,7 +2361,7 @@ fun main() {
     }
 }
 ```
----
+## ✅ Output:
 ```yaml
 The name of the Person is: Abcd
 Company Name: GeeksforGeeks
