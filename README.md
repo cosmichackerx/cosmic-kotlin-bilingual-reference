@@ -2769,3 +2769,82 @@ Modified name is: ModifiedName
 [1, 3, 4]
 ```
 ---
+---
+
+## 🔤 Definitions (Also vs Let)
+
+- **`let`**: A scoped function that uses `it` to refer to the object and returns the result of the block.
+- **`also`**: A scoped function that uses `it` and always returns the original object, regardless of the block’s content.
+- **Return behavior**: `let` returns a custom result; `also` returns the object itself.
+- **Side effects**: Logging, debugging, or temporary actions that don’t affect the returned value.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`let` = "custom result maker"**  
+  > _"Jaise kisi kaam ka nateeja nikalna — jo chahe woh wapas mile."_  
+  Like doing a task and getting a custom result back.
+
+- **`also` = "unchanged courier"**  
+  > _"Jaise delivery boy ka kaam sirf dena — cheez wapas wahi rehti hai."_  
+  Like a courier who delivers but doesn’t change the package.
+
+- **Returns object vs result**  
+  > _"`let` mein naya nateeja milta hai, `also` mein asli cheez wapas milti hai."_  
+  In `let`, you get a new result; in `also`, you get the original item.
+
+- **Side effects = "extra note taker"**  
+  > _"Jaise kisi file ke sath ek note lagana — file to wahi rehti hai."_  
+  Like attaching a note to a file without changing the file itself.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+fun main() {
+
+    // Also vs Let
+    /*
+        🔹 Both 'also' and 'let' are scope functions in Kotlin.
+        🔹 The key difference lies in what they return and how they refer to the object:
+            - 'let' returns the result of the lambda block (can use return statements).
+            - 'also' returns the original object (ignores return inside block).
+        🔹 'let' uses 'it' as the object reference by default.
+        🔹 'also' also uses 'it' but is typically used for performing side effects like logging.
+    */
+
+    // Example 1: Using 'let'
+    val letResult = "Kotlin".let {
+        println("Inside let: $it")
+        // Returns a new value (result of the block)
+        "Returned from let block"
+    }
+    println("Let Result: $letResult") // Output: Returned from let block
+
+    println("------------------------------------------------")
+
+    // Example 2: Using 'also'
+    val alsoResult = "Kotlin".also {
+        println("Inside also: $it")
+        // Even if we try to 'return' something, it won't replace the original object
+        // Because 'also' always returns the same object
+    }
+    println("Also Result: $alsoResult") // Output: Kotlin (original object)
+
+    /*
+        🔸 Summary:
+        let → returns the last line of the block (custom result)
+        also → returns the original object (no change in reference)
+    */
+}
+```
+## ✅ Output:
+```rust
+Inside let: Kotlin
+Let Result: Returned from let block
+------------------------------------------------
+Inside also: Kotlin
+Also Result: Kotlin
+```
