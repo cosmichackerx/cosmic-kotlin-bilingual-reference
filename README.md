@@ -2369,3 +2369,87 @@ Company Name: GeeksforGeeks
 Objective: A computer science portal for Geeks
 Founder: Sandeep Jain
 ```
+---
+---
+---
+
+## 🔤 Definitions
+
+- **`with(obj)`**: A scoped function used when the object is non-null. Executes a block with `this` referring to the object.
+- **`obj?.run {}`**: A scoped function used for nullable objects. Executes the block only if the object is not null.
+- **Safe call (`?.`)**: Ensures that the object is not null before accessing its properties or methods.
+- **Null safety**: Kotlin’s feature to prevent runtime crashes due to null references.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`with(obj)` = "confident guest mode"**  
+  > _"Jaise mehmaan ko bulakar us par kaam karna — lekin pehle se pata ho ke woh zaroor aayega."_  
+  Like inviting a guest and working with them — knowing they’ll definitely show up.
+
+- **`obj?.run {}` = "cautious guest mode"**  
+  > _"Jaise mehmaan ho sakta hai aaye ya nahi — is liye pehle check karna."_  
+  Like preparing for a guest who may or may not arrive — so you check first.
+
+- **Safe call (`?.`) = "null guard"**  
+  > _"Jaise pehle dekhna ke dabba khaali to nahi — phir use kholna."_  
+  Like checking if a box is empty before opening it.
+
+- **Null safety = "crash shield"**  
+  > _"Jaise seatbelt pehn kar gaari chalana — taake accident na ho."_  
+  Like wearing a seatbelt to avoid accidents.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// A mock WebSettings class to simulate real Android WebView settings
+class WebSettings {
+    var javaScriptEnabled: Boolean = false
+    var databaseEnabled: Boolean = false
+}
+
+// A mock WebView class that holds WebSettings
+class WebView {
+    var settings: WebSettings? = WebSettings()
+}
+
+fun main() {
+    // Run vs With
+    /*
+        Both "run" and "with" perform actions on an object and return the result of the last expression.
+        - "with(obj)" is used when 'obj' is non-null.
+        - "obj?.run { }" is safer for nullable objects.
+
+        Example: If 'webView.settings' can be null, 'run' prevents NullPointerExceptions.
+    */
+
+    // Create a WebView instance
+    val webView = WebView()
+
+    // Example using "with" — assumes settings is non-null
+    with(webView.settings) {
+        // Here we use safe calls (?.) to avoid null pointer issues
+        this?.javaScriptEnabled = true
+        this?.databaseEnabled = true
+    }
+
+    // Example using "run" — works better with nullable objects
+    webView.settings?.run {
+        // 'this' is automatically implied here
+        javaScriptEnabled = true
+        databaseEnabled = true
+    }
+
+    // Print the results to verify
+    println("JavaScript Enabled: ${webView.settings?.javaScriptEnabled}")
+    println("Database Enabled: ${webView.settings?.databaseEnabled}")
+}
+```
+## ✅ Output:
+```yaml
+JavaScript Enabled: true
+Database Enabled: true
+```
