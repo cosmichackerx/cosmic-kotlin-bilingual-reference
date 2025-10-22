@@ -2452,3 +2452,121 @@ fun main() {
 JavaScript Enabled: true
 Database Enabled: true
 ```
+---
+---
+
+## 🔤 Definitions (Apply)
+
+- **`apply`**: A scoped function that uses `this` to refer to the context object and always returns the object itself.
+- **Object initialization**: Setting up properties of an object right after creation.
+- **Nullable object**: An object that may or may not exist (`null`), requiring safe access.
+- **Intent**: A mock class representing Android’s intent system for actions and data.
+- **Uri.parse(...)**: Converts a string into a Uri object.
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`apply` = "self-setup station"**  
+  > _"Jaise koi shakhs apne naam, number aur address khud set kar raha ho."_  
+  Like someone setting up their own name, number, and address.
+
+- **Returns object = "ready-to-use package"**  
+  > _"Jaise aik tayar dabba jo turant use ho sakta hai."_  
+  Like a ready-made box that’s instantly usable.
+
+- **Object initialization = "first-time setup"**  
+  > _"Jaise nayi device ko pehli baar configure karna."_  
+  Like configuring a new device for the first time.
+
+- **Intent = "digital messenger"**  
+  > _"Jaise ek paighaam jo app se app bheja jata hai."_  
+  Like a message sent from one app to another.
+
+- **Uri.parse = "address decoder"**  
+  > _"Jaise ek likha hua pata ko samajhne wala tool."_  
+  Like a tool that understands a written address.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// Mock classes to simulate Android-like behavior
+class Intent {
+    var action: String? = null
+    var data: Uri? = null
+}
+
+class Uri private constructor(val uriString: String) {
+    companion object {
+        fun parse(uri: String) = Uri(uri)
+    }
+}
+
+// A simple Person class for demonstration
+class Person {
+    var name: String = ""
+    var contactNumber: String = ""
+    var address: String = ""
+
+    fun displayInfo() {
+        println("Name: $name")
+        println("Contact Number: $contactNumber")
+        println("Address: $address")
+    }
+}
+
+fun main() {
+    // Apply
+    /*
+        The `apply` function is similar to `run` in that it uses `this` to access
+        the object's members inside the block.
+        Difference: `apply` always returns the object itself, not the last expression.
+        This makes it great for object initialization.
+    */
+
+    // Example 1: Using `apply` safely on a nullable object
+    val person: Person? = Person()
+    person?.apply {
+        // 'this' refers to the current Person object
+        name = "Asdf"
+        contactNumber = "1234"
+        address = "Wasd"
+        displayInfo() // Displays updated info
+    }
+
+    // Example 2: Normal approach (without apply)
+    fun createIntentNormal(intentData: String, intentAction: String): Intent {
+        val intent = Intent()
+        intent.action = intentAction
+        intent.data = Uri.parse(intentData)
+        return intent
+    }
+
+    // Example 3: Improved approach using `apply`
+    fun createIntentUsingApply(intentData: String, intentAction: String): Intent =
+        Intent().apply {
+            // Context object is 'this' (the new Intent)
+            action = intentAction
+            data = Uri.parse(intentData)
+        }
+
+    // Create intents using both methods
+    val normalIntent = createIntentNormal("https://example.com", "VIEW")
+    val appliedIntent = createIntentUsingApply("https://kotlinlang.org", "OPEN")
+
+    // Print results
+    println("\nNormal Intent: action=${normalIntent.action}, data=${normalIntent.data?.uriString}")
+    println("Applied Intent: action=${appliedIntent.action}, data=${appliedIntent.data?.uriString}")
+}
+```
+```yaml
+Name: Asdf
+Contact Number: 1234
+Address: Wasd
+
+Normal Intent: action=VIEW, data=https://example.com
+Applied Intent: action=OPEN, data=https://kotlinlang.org
+```
+---
