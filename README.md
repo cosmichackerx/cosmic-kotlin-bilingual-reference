@@ -42,6 +42,7 @@ fun main() {
     }
 }
 ```
+---
 ![0](resources/0.png)
 ---
 
@@ -87,6 +88,7 @@ fun main() {
     println("-= $str $std $num")
 }
 ```
+---
 ![1](resources/1.png)
 ---
 
