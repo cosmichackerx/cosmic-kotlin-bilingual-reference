@@ -2561,6 +2561,7 @@ fun main() {
     println("Applied Intent: action=${appliedIntent.action}, data=${appliedIntent.data?.uriString}")
 }
 ```
+## ✅ Output:
 ```yaml
 Name: Asdf
 Contact Number: 1234
@@ -2568,5 +2569,104 @@ Address: Wasd
 
 Normal Intent: action=VIEW, data=https://example.com
 Applied Intent: action=OPEN, data=https://kotlinlang.org
+```
+---
+---
+
+## 🔤 Definitions (Apply vs Run)
+
+- **`apply`**: A scoped function that uses `this` to configure an object and always returns the object itself.
+- **`run`**: A scoped function that uses `this` and returns the result of the last expression inside the block.
+- **Object configuration**: Setting up properties of an object during creation.
+- **Return value**: The final result produced by a scoped function — either the object (`apply`) or a computed value (`run`).
+
+---
+
+## 🧠 Mnemonics & Analogies (English + Urdu)
+
+- **`apply` = "self-customizer"**  
+  > _"Jaise koi shakhs apne naam, number aur address khud set kar raha ho."_  
+  Like someone customizing their own profile.
+
+- **`run` = "task finisher"**  
+  > _"Jaise koi kaam kar ke nateeja de raha ho."_  
+  Like someone completing a task and giving back a result.
+
+- **Returns object vs result**  
+  > _"`apply` mein cheez wapas milti hai, `run` mein kaam ka nateeja."_  
+  In `apply`, you get the object back; in `run`, you get the outcome.
+
+- **`this` = "main actor"**  
+  > _"Jaise stage par sirf ek hero ho — har kaam usi se."_  
+  Like the hero on stage — all actions revolve around them.
+
+---
+
+## 💻 Code Example
+
+```kotlin
+// A simple Person class to demonstrate 'apply' and 'run'
+class Person {
+    var name: String = ""
+    var contactNumber: String = ""
+    var address: String = ""
+
+    fun displayInfo() {
+        println("Name: $name")
+        println("Contact: $contactNumber")
+        println("Address: $address")
+    }
+}
+
+fun main() {
+    // Apply vs Run
+    /*
+        🔹 The 'apply' function:
+           - Returns the same object it was called on.
+           - Refers to the object using 'this'.
+           - Commonly used for object configuration/initialization.
+
+        🔹 The 'run' function:
+           - Returns the result of the last expression or an explicit return statement.
+           - Also uses 'this' as context.
+           - Commonly used when you need to compute and return a value.
+    */
+
+    // Example using 'apply' — good for configuring objects
+    val personApply = Person().apply {
+        name = "Alice"
+        contactNumber = "12345"
+        address = "Wonderland"
+        displayInfo() // Works fine
+        // return this ❌ not allowed — 'apply' always returns the object itself
+    }
+
+    println("\nResult of 'apply': $personApply") // Prints the object reference
+
+    // Example using 'run' — good when you want to return a result
+    val personRunResult = Person().run {
+        name = "Bob"
+        contactNumber = "67890"
+        address = "Neverland"
+        displayInfo() // Just to show info
+        "Person details saved successfully ✅" // Last expression returned
+    }
+
+    println("\nResult of 'run': $personRunResult") // Prints the returned string
+}
+```
+## ✅ Output:
+```vbnet
+Name: Alice
+Contact: 12345
+Address: Wonderland
+
+Result of 'apply': Person@5e91993f
+
+Name: Bob
+Contact: 67890
+Address: Neverland
+
+Result of 'run': Person details saved successfully ✅
 ```
 ---
