@@ -2372,6 +2372,7 @@ Objective: A computer science portal for Geeks
 Founder: Sandeep Jain
 ```
 ---
+![29](resources/29.png)
 ---
 
 ## 🔤 Definitions (Run vs With)
@@ -2455,6 +2456,7 @@ JavaScript Enabled: true
 Database Enabled: true
 ```
 ---
+![30](resources/30.png)
 ---
 
 ## 🔤 Definitions (Apply)
@@ -2573,6 +2575,7 @@ Normal Intent: action=VIEW, data=https://example.com
 Applied Intent: action=OPEN, data=https://kotlinlang.org
 ```
 ---
+![31](resources/31.png)
 ---
 
 ## 🔤 Definitions (Apply vs Run)
@@ -2672,6 +2675,7 @@ Address: Neverland
 Result of 'run': Person details saved successfully ✅
 ```
 ---
+![32](resources/32.png)
 ---
 
 ## 🔤 Definitions (Also)
@@ -2771,6 +2775,7 @@ Modified name is: ModifiedName
 [1, 3, 4]
 ```
 ---
+![33](resources/33.png)
 ---
 
 ## 🔤 Definitions (Also vs Let)
@@ -2851,4 +2856,5 @@ Inside also: Kotlin
 Also Result: Kotlin
 ```
 ---
+![34](resources/34.png)
 ---
