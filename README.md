@@ -707,6 +707,11 @@ fun main() {
 ## 💻 Code Example
 
 ```kotlin
+// Define a custom annotation class
+@Target(AnnotationTarget.CONSTRUCTOR)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class Inject
+
 fun main() {
     // 'open' allows other classes to inherit this class
     open class Shape
