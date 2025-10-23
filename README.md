@@ -1838,6 +1838,85 @@ fun main() {
     println("${sophia.name} likes ${sophia.likedPeople.first().name}")
 }
 ```
+## 🕶️ Cybersecurity Example
+```kotlin
+class Firewall {
+    infix fun allows(ip: String) = println("✅ Access granted for $ip")
+    infix fun blocks(ip: String) = println("🚫 Access denied for $ip")
+    infix fun scans(ip: String) = println("🧠 Scanning $ip for threats...")
+}
+
+fun main() {
+    val firewall = Firewall()
+    val trusted = "192.168.1.10"
+    val intruder = "10.0.0.66"
+
+    firewall allows trusted
+    firewall scans intruder
+    firewall blocks intruder
+}
+```
+## 📱 Android Example
+```kotlin
+class User(val name: String) {
+    infix fun clicks(button: String) = println("$name tapped the '$button' button 🖱️")
+    infix fun swipes(direction: String) = println("$name swiped $direction 👆")
+    infix fun sends(message: String) = println("$name sent message: \"$message\" ✉️")
+}
+
+fun main() {
+    val user = User("Ava")
+
+    user clicks "Login"
+    user swipes "right"
+    user sends "Hey, Kotlin rocks!"
+}
+```
+## 🤖 AI / Machine Learning Example
+```kotlin
+class Model(val name: String) {
+    infix fun learns(data: String) = println("🤖 $name learned from $data dataset")
+    infix fun predicts(input: String) = println("🔮 $name predicts output for $input")
+    infix fun improvesBy(feedback: String) = println("⚙️ $name improves by $feedback feedback")
+}
+
+fun main() {
+    val gemini = Model("Gemini")
+    val gpt = Model("GPT-5")
+
+    gemini learns "text-corpus"
+    gpt predicts "cyber attack"
+    gemini improvesBy "human evaluation"
+}
+```
+## Dark & Twisted Kotlin DSL Magic
+```kotlin
+infix fun Int.pow(exp: Int): Int = this.toDouble().pow(exp).toInt()
+infix fun String.invoke(spell: String) = println("🪄 $this casts the spell '$spell' 🔥")
+infix fun String.binds(target: String) = println("🩸 $this binds $target with magic")
+
+fun main() {
+    val wizard = "Arslan"
+    val demon = "Zalthor"
+
+    wizard invokes "Inferno"
+    wizard binds demon
+    println("2 pow 5 = ${2 pow 5}")
+}
+```
+## 🔥 Bonus: Twisted Functional Example
+```kotlin
+infix fun <T> List<T>.filteredBy(condition: (T) -> Boolean) = this.filter(condition)
+infix fun <T> List<T>.mappedTo(transform: (T) -> Any) = this.map(transform)
+
+fun main() {
+    val data = listOf(2, 4, 6, 8, 10)
+
+    val result = data filteredBy { it > 5 } mappedTo { "Value: $it" }
+
+    println(result)
+}
+```
 ---
 ![23](resources/23.png)
 ---
