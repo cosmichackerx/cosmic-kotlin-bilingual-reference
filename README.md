@@ -1992,7 +1992,7 @@ fun main() {
 - **`apply`**: Executes a block and returns the object itself — commonly used for object initialization.
 
 ---
-[Kotlin_Scoped_Functions](https://youtu.be/T7BdEAzErY8)
+[![Watch the video](Kotlin Scoped Functions Tutorial.png)](https://youtu.be/T7BdEAzErY8)
 ---
 
 ## 🧠 Mnemonics & Analogies (English + Urdu)
