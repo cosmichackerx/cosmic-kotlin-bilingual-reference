@@ -907,7 +907,7 @@ fun main() {
     println("Name: $name, Age: $age")
 }
 ```
-## 🌱 1️⃣
+## 🌱 1️⃣ Syntax:
 ```kotlin
 data class ClassName(val property1: Type, val property2: Type)
 ```
