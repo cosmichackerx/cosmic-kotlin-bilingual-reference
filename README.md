@@ -907,6 +907,256 @@ fun main() {
     println("Name: $name, Age: $age")
 }
 ```
+## 🌱 1️⃣
+```kotlin
+data class ClassName(val property1: Type, val property2: Type)
+```
+## 🧩 2️⃣ Basic Example
+```kotlin
+fun main() {
+    data class User(val name: String, val age: Int)
+
+    val u1 = User("Arslan", 19)
+    val u2 = User("Arslan", 19)
+    val u3 = User("Zamin", 20)
+
+    println(u1)          // toString()
+    println(u1 == u2)    // true (content-based equality)
+    println(u1 == u3)    // false
+    println(u1.copy(age = 21))  // copy() with change
+
+    // Destructuring
+    val (n, a) = u1
+    println("Name: $n, Age: $a")
+}
+```
+## ⚙️ 3️⃣ Behind the Scenes
+> When you write:
+
+```kotlin
+data class User(val name: String, val age: Int)
+```
+> Kotlin secretly generates:
+
+```kotlin
+class User(val name: String, val age: Int) {
+    fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
+    override fun toString() = "User(name=$name, age=$age)"
+    override fun equals(other: Any?) = (other is User && other.name == name && other.age == age)
+    override fun hashCode() = 31 * name.hashCode() + age
+    operator fun component1() = name
+    operator fun component2() = age
+
+    // So basically — tons of code written automatically for you 🧠
+
+}
+```
+## 🚫 4️⃣ Rules of Data Classes
+```yaml
+| Rule | Description                                                                     |
+| ---- | ------------------------------------------------------------------------------- |
+| 1️⃣  | Must have at least one property in primary constructor                          |
+| 2️⃣  | All primary constructor properties must be marked with `val` or `var`           |
+| 3️⃣  | Cannot be `abstract`, `open`, `sealed`, or `inner`                              |
+| 4️⃣  | Can implement interfaces but cannot extend other classes                        |
+| 5️⃣  | Properties in the body are **not used** in `equals()` or `copy()` automatically |
+
+```
+## 🧠 5️⃣ Data Class vs Normal Class
+```kotlin
+// Normal Class
+class NormalUser(val name: String, val age: Int)
+
+// Data Class
+data class DataUser(val name: String, val age: Int)
+
+fun main() {
+    val n1 = NormalUser("Arslan", 19)
+    val n2 = NormalUser("Arslan", 19)
+    println(n1 == n2) // false -> compares references
+
+    val d1 = DataUser("Arslan", 19)
+    val d2 = DataUser("Arslan", 19)
+    println(d1 == d2) // true -> compares values
+
+    /*
+        🎯 Difference:
+            -Normal class → compares object reference
+            -Data class → compares content
+    */
+}
+```
+## 🧱 6️⃣ Copy Function & Immutability
+```kotlin
+data class Product(val id: Int, val name: String, val price: Double)
+
+fun main() {
+    val p1 = Product(1, "Keyboard", 1500.0)
+    val p2 = p1.copy(price = 1800.0)
+
+    println(p1)
+    println(p2)
+}
+```
+## Output:
+```scss
+Product(id=1, name=Keyboard, price=1500.0)
+Product(id=1, name=Keyboard, price=1800.0)
+// → Ideal for immutable states like UI models, Redux, ViewModels, etc.
+```
+## 💫 7️⃣ Destructuring Components (componentN)
+```kotlin
+// Data classes automatically generate componentN() functions.
+
+data class Student(val id: Int, val name: String, val grade: String)
+
+fun main() {
+    val student = Student(101, "Jawad", "A+")
+    val (id, name, grade) = student
+
+    println("ID: $id, Name: $name, Grade: $grade")
+
+    // Internally calls:
+    // student.component1(), student.component2(), student.component3()
+}
+```
+## 🧩 8️⃣ Data Class in Collections
+```kotlin
+data class City(val name: String, val population: Int)
+
+fun main() {
+    val cities = listOf(
+        City("Islamabad", 1200000),
+        City("Karachi", 15000000),
+        City("Multan", 2000000)
+    )
+
+    val bigCities = cities.filter { it.population > 3000000 }
+    bigCities.forEach { println(it.name) }
+}
+```
+## 🧬 9️⃣ Nested Data Classes
+```kotlin
+// You can nest data classes inside others — like complex models or JSON objects.
+
+data class Company(val name: String, val address: Address) {
+    data class Address(val city: String, val country: String)
+}
+
+fun main() {
+    val c = Company("Cosmic Tech", Company.Address("Islamabad", "Pakistan"))
+    println(c)
+    println(c.address.city)
+}
+```
+## 🔄 🔟 Custom Methods in Data Classes
+```kotlin
+// Data classes can have their own functions too:
+
+data class Circle(val radius: Double) {
+    fun area() = Math.PI * radius * radius
+    fun circumference() = 2 * Math.PI * radius
+}
+
+fun main() {
+    val circle = Circle(5.0)
+    println("Area = ${circle.area()}")
+    println("Circumference = ${circle.circumference()}")
+}
+```
+## 🌍 1️⃣1️⃣ Real-World: JSON / DTO Example
+> Used often in APIs:
+```kotlin
+data class UserDto(
+    val id: Int,
+    val name: String,
+    val email: String
+)
+```
+> Then mapped to a domain model:
+```kotlin
+data class User(
+    val id: Int,
+    val fullName: String,
+    val email: String
+)
+```
+> Converting:
+```kotlin
+fun UserDto.toDomain() = User(id, name, email)
+```
+## 🧠 1️⃣2️⃣ Advanced Trick: Custom equals() Behavior
+> You can still override generated methods:
+```kotlin
+data class Employee(val id: Int, val name: String) {
+    override fun equals(other: Any?): Boolean {
+        return other is Employee && other.id == id
+    }
+}
+```
+> Now equality is only based on id.
+## ⚖️ 1️⃣3️⃣ Data Classes with Default Parameters
+```kotlin
+data class Task(val title: String, val isDone: Boolean = false)
+
+fun main() {
+    val t1 = Task("Learn Kotlin")
+    println(t1) // Task(title=Learn Kotlin, isDone=false)
+}
+```
+## 🧩 1️⃣4️⃣ Data Class Copy with Deep Nesting
+```kotlin
+data class Engine(val hp: Int)
+data class Car(val model: String, val engine: Engine)
+
+fun main() {
+    val car1 = Car("Honda Civic", Engine(180))
+    val car2 = car1.copy(engine = car1.engine.copy(hp = 200))
+    println(car2)
+}
+```
+## 🧙 1️⃣5️⃣ Data Class in When Statements
+> Because they have componentN(), they’re great for pattern matching:
+```kotlin
+data class Point(val x: Int, val y: Int)
+
+fun describe(p: Point) = when (p) {
+    Point(0, 0) -> "Origin"
+    Point(0, _) -> "Y-Axis"
+    Point(_, 0) -> "X-Axis"
+    else -> "Somewhere in space"
+}
+
+fun main() {
+    println(describe(Point(0, 5)))
+}
+```
+## 💡 1️⃣6️⃣ Data Classes + Copy + Lists = Functional Magic
+```kotlin
+data class User(val id: Int, val name: String, val online: Boolean)
+
+fun main() {
+    val users = listOf(
+        User(1, "Arslan", true),
+        User(2, "Zamin", false)
+    )
+
+    val updated = users.map { if (it.id == 2) it.copy(online = true) else it }
+    println(updated)
+}
+```
+## 🧨 1️⃣7️⃣ TL;DR — Why Data Classes Rock
+```yaml
+| Feature                   | Normal Class | Data Class |
+| ------------------------- | ------------ | ---------- |
+| `toString()`              | ❌            | ✅          |
+| `equals()` / `hashCode()` | ❌            | ✅          |
+| `copy()`                  | ❌            | ✅          |
+| `componentN()`            | ❌            | ✅          |
+| Destructuring             | ❌            | ✅          |
+| Value Equality            | ❌            | ✅          |
+
+```
 ---
 ![10](resources/10.png)
 ---
